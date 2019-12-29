@@ -1,0 +1,145 @@
+// Place all the styles related to the sengas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.show_btn-square {
+  display: inline-block;
+  padding: 0.5em 1em;
+  font-size: 13px;
+  text-decoration: none;
+  background: #668ad8;/*ボタン色*/
+  color: #FFF;
+  border-bottom: solid 4px #627295;
+  border-radius: 3px;
+}
+.senga_info{
+  -webkit-box-flex: 1;
+  flex: 1 1 auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.info{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+//依頼内容枠
+.box3 {
+    max-width : 400px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+    
+    .box-title {
+        position: absolute;
+        display: inline-block;
+        top: -13px;
+        left: 10px;
+        padding: 0 9px;
+        line-height: 1;
+        font-size: 19px;
+        background: #e9ecef;
+        color: #00bfff;
+        font-weight: bold;
+        
+        p {
+            margin: 0; 
+            padding: 0;
+        }
+    }
+}
+
+//依頼内容枠
+.box9 {
+    max-width : 400px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 0.5em 1em;
+    border: solid 3px #95ccff;
+    border-radius: 8px;
+    
+    .box-title {
+        position: absolute;
+        display: inline-block;
+        top: -13px;
+        left: 10px;
+        padding: 0 9px;
+        line-height: 1;
+        font-size: 19px;
+        background: #e9ecef;
+        color: #00bfff;
+        font-weight: bold;
+        
+        p {
+            margin: 0; 
+            padding: 0;
+        }
+    }
+}
+
+//投稿タグ
+.box10 {
+    max-width : 400px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    padding: 0.5em 1em;
+    border: solid 3px #ff962d;
+    border-radius: 8px;
+    
+    .box-title {
+        position: absolute;
+        display: inline-block;
+        top: -13px;
+        left: 10px;
+        padding: 0 9px;
+        line-height: 1;
+        font-size: 19px;
+        background: #FFF;
+        color: #ff962d;
+        font-weight: bold;
+    
+            p {
+            margin: 0; 
+            padding: 0;
+    }
+  }
+}
+
+//リストタグ
+.box11 {
+    max-width : 400px;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    padding: 0.5em 1em;
+    border: solid 3px #ff962d;
+    border-radius: 8px;
+    
+    .box-title {
+        position: absolute;
+        display: inline-block;
+        top: -13px;
+        left: 10px;
+        padding: 0 9px;
+        line-height: 1;
+        font-size: 19px;
+        background: #FFF;
+        color: #ff962d;
+        
+        p {
+            margin: 0; 
+            padding: 0;
+    }
+  }
+}

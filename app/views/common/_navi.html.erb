@@ -1,0 +1,46 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to 'ホーム',root_path %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to 'マイページ',profile_path(current_user) %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to '線画を投稿する',sengas_path %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to '線画一覧',senga_list_path %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to '投稿線画一覧',senga_list_path(user_id: current_user.id) %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to 'お気に入り一覧',senga_list_path(type: 'like') %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to '申請済み一覧',senga_list_path(type: 'requests') %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to '許可済み一覧',senga_list_path(type: 'permitted') %>
+        </li>
+        
+        <li class="nav-item">
+          <%= link_to 'サインアウト',sign_out_path %>
+        </li>
+    </ul>
+  </div>
+</nav>

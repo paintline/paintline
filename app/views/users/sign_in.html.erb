@@ -1,0 +1,24 @@
+<div class = "container">
+	<div class="wrapper">
+		<div action="" method="post" name="Login_Form" class="form-signin">       
+		    <h3 class="form-signin-heading">PaintLine</h3>
+		    <hr class="colorgraph"><br>
+			  <%= form_for User.new, url: sign_in_path do |f| %>
+  			  
+  			  <%= f.email_field :email, placeholder: "メールアドレス" , :class => 'form-control' %>
+  
+  			  <%= f.password_field :password, placeholder: "パスワード" , :class => 'form-control' %>    
+  			 
+  			 <div class="sign">
+  			 	<button class="btn-square">サインインする</button>
+  			 </div>
+  			 
+  			 <div class="sign_up_link">
+	     　　 <p>新規登録しますか？<br> <%= link_to "新規登録する", "/sign_up" %></p>
+	     　　</div>
+  			  
+			  <% end %>
+
+		</div>			
+	</div>
+</div>

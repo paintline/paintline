@@ -1,0 +1,40 @@
+<%= render partial: 'common/navi' %>
+
+<!-- プロフィールコンテンツ部分 -->
+<section class="jumbotron text-center">
+  <div class="container">
+    
+    <%= form_for current_user, url: profile_edit_path, method: :patch do |f| %>
+        
+      <!-- 投稿画像 -->
+      <div class="image">
+        <% if current_user.image.present? %>
+          <%= image_tag current_user.image, id: :img_prev , :size =>'700x700' %>
+        <% else %>
+          <%= image_tag "https://dummyimage.com/200x200/000/fff", id: :img_prev , :size =>'300x300' %>
+        <% end %>
+      </div>
+  
+        <div class="field">
+          <label>プロフィール画像</label>
+            <div class="profile_right">
+               <%= f.file_field :image ,id: :user_img , class: "submit_class_name_here" %>
+            </div>
+        </div>
+        
+        <%= f.label :name, "名前" %>
+        <%= f.text_field :name, placeholder: "名前を入力して下さい。" , class: 'form-control'%>
+      
+        <%= f.label :email, "メールアドレス" %>
+        <%= f.text_field :email, placeholder: "メールアドレスを入力して下さい。", class: 'form-control' %>
+        
+      <div class="bottun">
+        
+        <%= f.submit '変更する', :class => 'submit_class_name_here' %>
+        
+      </div>
+      
+    <% end %>
+  </div>
+</section>
+<%= render partial: 'common/footer' %>

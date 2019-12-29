@@ -1,0 +1,72 @@
+<!-- 実行してるモデル名を取得 ただしモデル名とコントローラー名が一対一で対応しているのが前提 -->
+<% model_name = controller.controller_name %>
+
+<!-- モデル名を単数形にして頭文字を大文字にして.newを追加してeval関数でRubyとして実行 -->
+<% model = eval(model_name.singularize.capitalize + '.new') %>
+
+<!-- モデル名の後に_pathを付けることでresoucesのルールにのっとったpathを定義する -->
+<% path_name = model_name + '_path'%>
+
+<%= render partial: 'common/navi' %>
+
+<div class="new_container">
+ <div class ="new_post_wrap">
+  <%= form_for model,url:eval(path_name) do |s| %>
+    <!-- 投稿画像 -->
+    <div class="image">
+      <% if model.image.present? %>
+        <%= image_tag model.image, id: :img_prev , class: 'new_image' %>
+      <% else %>
+        <%= image_tag "https://dummyimage.com/200x200/000/fff", id: :img_prev , class: 'new_image', :size =>'500x500' %>
+      <% end %>
+    </div>
+    <% if model_name == 'paints' %>
+      <%= s.hidden_field :senga_id,value: params[:senga_id] %>
+    <% end %>
+    <% if model_name == 'sengas' %>
+    　<div class="box10">
+        <% Category.all.each do |c| %>
+          <span class="box-title">タグを選択</span>
+          <input type='checkbox' name = 'categories[]' value = '<%= c.id %>'><%= c.name %>
+        <% end %>
+      </div>
+    <% end %>
+    
+    <!-- ファイル選択ボタン -->
+    <div class="file_wrap">
+      <p>【 .PSDデータのファイルを選択 】</p>
+      <%= s.file_field :image ,id: :user_img%>
+    </div>
+    
+    <% if model_name == 'sengas' %>
+    
+      <!-- タイトル -->
+      <div class="tittle_wrap">
+        <%= s.text_field :tittle,placeholder: "タイトルを入力", :class => 'form-control'%>
+      </div>
+        
+    <% end %>
+    
+    <% if model_name == 'paints' %>
+      <!-- 線画 -->
+      <%= s.hidden_field :senga_id,:value => params[:senga_id] %>
+    <% end %>
+    
+    <!-- 説明文 -->
+    <div class="text_wrap">
+      <%= s.text_area :description, placeholder: "依頼内容を", :class => 'form-control'%>
+    </div>
+    
+    <!-- 送信ボタン -->
+    
+    <% if model_name != 'paints' || model_name == 'paints' && current_user.senga_requests.find_by(:senga_id => params[:senga_id]) && current_user.senga_requests.find_by(:senga_id => params[:senga_id]).permission == true %>
+      <div class="bottun">
+        <%= s.submit '送信する', :class => 'submit_class_name_here' %>
+      </div>
+    <% end %>
+    
+    <%= render partial: 'common/footer' %>
+
+  <% end %>
+ </div>
+</div>

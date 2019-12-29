@@ -1,0 +1,47 @@
+<!-- 実行してるコントローラ名を取得 ただしモデル名とコントローラー名が一対一で対応しているのが前提 -->
+<% model_name = params[:model] %>
+
+<!-- コントローラー名を単数形にして頭文字を大文字にして.newを追加してeval関数でRubyとして実行 -->
+<% model = eval(model_name.singularize.capitalize + '.new') %>
+
+<!-- コントローラー名の後に_pathを付けることでresoucesのルールにのっとったpathを定義する -->
+<% path_name = model_name + '_path'%>
+
+<%= render partial: 'common/navi' %>
+
+<!-- 戻る --> 
+<%= link_to '線画一覧に戻る',senga_list_path %>
+
+<!-- 投稿フォーム -->   
+<%= form_for model,url:eval(path_name) do |s| %>
+  <section class="jumbotron text-center">
+    <div class="container">
+      
+    <!-- 画像 -->    
+      <div class="image">
+        <% if model.image.present? %>
+          <%= image_tag model.image, class: 'show_image' %>
+        <% else %>
+          <%= image_tag "https://dummyimage.com/200x200/000/fff", id: :img_prev , class: 'show_image' %>
+        <% end %>
+      </div>
+      
+      <!-- 画像情報 -->  
+      <div class="card-body">
+        <h4 class="card-title text-center">
+        　<%= @senga.tittle %>
+        </h4>
+        <p class="card-text text-center">
+        <%= @senga.description %>
+        </p>
+        <% if SengaLike.find_by(:user_id => current_user.id , :senga_id => @senga.id )  %>
+        　<%= link_to 'お気に入りにから削除' ,senga_like_path(params[:id]), class: 'favolite' %>
+        <% else %>
+        　<%= link_to 'お気に入りに追加' ,senga_like_path(params[:id]) , class: 'favolite' %>
+        <% end %>
+      </div>
+     
+    </div>
+  </section>
+
+<%= render partial: 'common/footer' %>

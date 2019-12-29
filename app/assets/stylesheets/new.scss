@@ -1,0 +1,130 @@
+.new_container{
+  margin-left: auto;
+  margin-right: auto; 
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.new_image{
+    max-width: 100%; 
+    height:auto;
+    padding : 10px;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;      
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+.new_post_wrap {
+  width: 90%;
+  background-color: white;
+  height: 80vh;
+  margin-left: auto;
+  margin-right: auto; 
+  text-align: center;
+  padding: 20px;
+  h1 {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .bottun{
+    clear: both;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+    .submit_class_name_here {
+      margin-top: -50px;
+      border-radius : 5%;          /* 角丸       */
+      font-size     : 15pt;        /* 文字サイズ */
+      text-align    : center;      /* 文字位置   */
+      cursor        : pointer;     /* カーソル   */
+      padding       : 12px 12px;   /* 余白       */
+      background    : #000066;     /* 背景色     */
+      color         : #ffffff;     /* 文字色     */
+      line-height   : 1em;         /* 1行の高さ  */
+      transition    : .3s;         /* なめらか変化 */
+      box-shadow    : 6px 6px 3px #666666;  /* 影の設定 */
+      border        : 2px solid #000066;    /* 枠の指定 */
+    }
+    .submit_class_name_here:hover {
+      box-shadow    : none;        /* カーソル時の影消去 */
+      color         : #000066;     /* 背景色     */
+      background    : #ffffff;     /* 文字色     */
+    }
+  }
+  
+  .tittle_wrap{
+    resize: none;
+    box-sizing: border-box;
+    padding: 10px;
+    max-width: 500px; 
+    height:auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .text_wrap{
+    resize: none;
+    box-sizing: border-box;
+    padding: 10px;
+    max-width: 500px; 
+    max-height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    
+      .form-control{
+    height: 10vh;
+    }
+  }
+  
+  .category_menu{
+    display: inline-block;
+    width: 80%;
+    padding-left: 40px; 
+    padding-right: 40px; 
+    padding-top: 20px; 
+    padding-top: 20px; 
+    
+    .control{
+      font-size: 40px;
+    }
+  }
+  
+  // ファイル選択ボタン
+  .file_wrap {
+    margin-bottom: 10px;
+  }
+  //
+  .text{
+    font-size:10pt; 
+  }
+  // ボタン
+  .btn_wrap {
+    text-align: center;
+    input[type="submit"] {
+      background-color: #ccc;
+      display: block;
+      color: white;
+      border: 1px solid darken(#ccc, 5%);
+      border-radius: 3px;
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      &:hover {
+        background-color: darken(#ccc, 3%);
+      }
+    }
+  }
+}
+
+.btn-primary{
+  position: fixed;
+  bottom: 10vh;
+  right: 15vw;
+}

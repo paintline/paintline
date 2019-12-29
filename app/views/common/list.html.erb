@@ -1,0 +1,50 @@
+<%= render partial: 'common/navi' %>
+<main role="main">
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <% @pictures.each do |s| %>
+          <div class="col-md-4">
+            <div class="card mb-4 box-shadow">
+              
+              <h4 class="card-title text-center">
+                <%= s.tittle %>
+              </h4>
+              
+              <%= link_to senga_path(s) do %>
+                <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
+              <% end %>
+              
+              <div class="card-body">
+                <p class="card-text text-center">
+                  <div class="box3">
+                    <span class="box-title">依頼内容</span>
+                    <%= s.description %>
+                  </div>
+                </p>
+                
+                <div class="box11">
+                <span class="box-title">タグ</span>
+                <% s.senga_categories.each do |sc| %>
+                  <%=link_to sc.category.name, senga_list_path(category: sc.category.id,type: 'category') %>
+                <% end %>
+                
+                </div>
+                
+                <p class="card-text text-center">
+                  <p class="favorite text-center">
+                  お気に入り<%= s.senga_likes.length %>件
+                  </p>
+                </p>
+                
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>
+<div class='p-top__paginate'><%= paginate(@pictures) %></div>
+
+<%= render partial: 'common/footer' %>

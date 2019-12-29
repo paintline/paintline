@@ -1,0 +1,81 @@
+<%= render partial: 'common/navi' %>
+
+<!-- 詳細画像 -->    
+  <section class="jumbotron text-center">
+    <div class="container">
+      
+      <h4 class="card-title text-center">
+        <%= @senga.tittle %>
+      </h4>
+      
+    <!-- 画像 -->    
+    <%= image_tag (@senga.image.url + '.png'), class: 'show_image' %>
+    
+      <!-- 画像情報 -->
+      <div class="senga_info">
+        
+        <p class="card-text text-center">
+          <div class="box9">
+              <span class="box-title">依頼内容</span>
+              <%= @senga.description %>
+          </div>
+          <div class="info">
+          <% if @senga.user_id != current_user.id %>
+            <% if SengaLike.find_by(:user_id => current_user.id , :senga_id => @senga.id )  %>
+            　<%= link_to 'お気に入りにから削除' ,senga_like_path(params[:id]), class: "show_btn-square" %>
+            <% else %>
+            　<%= link_to 'お気に入りに追加' ,senga_like_path(params[:id]) , class: "show_btn-square" %>
+            <% end %>
+          <% end %>
+
+          <% if @senga.user_id != current_user.id %>
+            <% if SengaRequest.find_by(:user_id => current_user.id, :senga_id => @senga.id )%>
+            <% if SengaRequest.find_by(:user_id => current_user.id, :senga_id => @senga.id ).permission != true %>
+            <%= link_to '申請取り消し', senga_request_path(@senga.id) , class: "show_btn-square"%>
+            <% end %>
+            <% else %>
+            <%= link_to '申請する', senga_request_path(@senga.id) , class: "show_btn-square"%>
+            <% end %>
+          <% end %>
+          </div>
+          
+        </p>
+
+        
+        <% if @senga.user_id == current_user.id %>
+          <p>
+            申請者一覧
+          </p>
+          <ul>
+            <% @senga.senga_requests.where(permission: nil).or(@senga.senga_requests.where(permission: true)).each do |r| %>
+              <li>
+                <%= r.user.name %>
+                <% if r.permission != true %>
+                  <%= link_to '申請許可' , senga_request_commit_path(r.id) %>
+                <% else%>
+                  <%= link_to '申請削除' , senga_request_commit_path(r.id) %>
+                <% end %>
+                <% if r.permission != false %>
+                  <%= link_to '不許可' , senga_request_deny_path(r.id) %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+        
+        <% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission == true %>
+          <%= link_to '線画をダウンロード' ,@senga.image.url %>
+        <% end %>
+        
+        <% if @senga.user_id != current_user.id %>
+          <%= link_to '投稿する' ,paints_path(senga_id: @senga.id) %>
+        <% end%>
+      </div>
+     
+    </div>
+  </section>
+  <!-- 戻る --> 
+  <%= link_to :back do %>
+    <p class="back">戻る</p>
+  <% end %>
+  <%= render partial: 'common/footer' %>
