@@ -1,0 +1,44 @@
+<%= render partial: 'common/navi' %>
+
+<!-- 詳細画像 -->    
+  <section class="jumbotron text-center">
+    <div class="container">
+      
+      <h4 class="card-title text-center">
+        <%= @paint.senga.tittle %>
+      </h4>
+      
+    <!-- 画像 -->    
+    <%= image_tag (@paint.image.url + '.png'), class: 'show_image' %>
+    
+      <!-- 画像情報 -->
+      <div class="senga_info">
+        
+        <p class="card-text text-center">
+          <div class="box9">
+              <span class="box-title">依頼内容</span>
+              <%= @paint.description %>
+          </div>
+          <div class="info">
+          <% if @paint.user_id != current_user.id %>
+            <% if SengaLike.find_by(:user_id => current_user.id , :senga_id => @paint.id )  %>
+            　<%= link_to 'お気に入りにから削除' ,senga_like_path(params[:id]), class: "show_btn-square" %>
+            <% else %>
+            　<%= link_to 'お気に入りに追加' ,senga_like_path(params[:id]) , class: "show_btn-square" %>
+            <% end %>
+          <% end %>
+          
+          <%= @paint.senga.user.email%>
+          <%= @paint.user.email%>
+          
+          </div>
+        </p>
+      </div>
+     
+    </div>
+  </section>
+  <!-- 戻る --> 
+  <%= link_to :back do %>
+    <p class="back">戻る</p>
+  <% end %>
+  <%= render partial: 'common/footer' %>

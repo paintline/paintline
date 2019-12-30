@@ -18,12 +18,28 @@ class PaintsController < ApplicationController
         end
     end
     
+    def show
+        #sengaテーブルからIDを取得
+        @paint = Paint.find(params[:id])
+    end
+    
     def create
          paint = Paint.new(paint_params)
          
          if paint.save
              # 成功
             flash[:succsess] = "画像投稿しました"
+              if File.basename(paint.image.url).split('.')[1] != 'psd'
+              flash[:danger] = "psdデータを投稿してください。"
+              redirect_to paints_path and return
+              end
+              
+              # 成功
+              #senga = Senga.find(params[:id])
+              require 'psd'
+              @psd = PSD.new('/home/ec2-user/environment/paintline/public' + paint.image.url)
+              @psd.parse!
+              @psd.image.save_as_png '/home/ec2-user/environment/paintline/public' + paint.image.url + '.png'
         
         redirect_to root_path
         

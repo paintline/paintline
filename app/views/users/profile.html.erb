@@ -1,5 +1,21 @@
 <%= render partial: 'common/navi' %>
-<p>やぁ</p>
+
+<div class="profile">
+  
+  <div class="image">
+    <%= @user.image %>
+    <%= image_tag @user.image.url, class: 'show_image' %>
+  </div>
+  <div class="info">
+    
+    <div class="name">
+      <h1><%= @user.name %></h1>
+    </div>
+    
+  </div>
+  
+</div>
+
 <%= @user.id %>
 <%= link_to '編集する' ,profile_edit_path %>
 <%= render partial: 'common/footer' %>

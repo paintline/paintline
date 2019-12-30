@@ -1,0 +1,15 @@
+<%= render partial: 'common/navi' %>
+
+<% @requests.each do |e| %>
+    <%= e.user.email %>が<%= e.senga.tittle%>に対して申請しました。
+<% end%>
+
+<% @posted.each do |e| %>
+    <%= e.user.email %>が<%= e.senga.tittle%>に対して画像を投稿しました。
+<% end%>
+
+<% @confirmed.each do |e| %>
+    <%= e.senga.tittle %>に対しての申請が許可されました。
+<% end%>
+
+<%= render partial: 'common/footer' %>

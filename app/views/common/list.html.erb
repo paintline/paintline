@@ -6,15 +6,25 @@
         <% @pictures.each do |s| %>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
-              
-              <h4 class="card-title text-center">
-                <%= s.tittle %>
-              </h4>
-              
-              <%= link_to senga_path(s) do %>
-                <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
+              <% if s.class.name == "Senga" %>
+                <h4 class="card-title text-center">
+                  <%= s.tittle %>
+                </h4>
+              <% elsif s.class.name == "Paint" %>
+                <h4 class="card-title text-center">
+                  <%= s.senga.tittle %>
+                </h4>
               <% end %>
               
+              <% if s.class.name == "Senga" %>
+                <%= link_to senga_path(s) do %>
+                  <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
+                <% end %>
+              <% elsif s.class.name == "Paint"%>
+                <%= link_to paint_path(s) do %>
+                  <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
+                <% end %>
+              <% end %>
               <div class="card-body">
                 <p class="card-text text-center">
                   <div class="box3">
@@ -25,18 +35,24 @@
                 
                 <div class="box11">
                 <span class="box-title">タグ</span>
-                <% s.senga_categories.each do |sc| %>
-                  <%=link_to sc.category.name, senga_list_path(category: sc.category.id,type: 'category') %>
-                <% end %>
-                
+                  <% if s.class.name == "Senga" %>
+                    <% s.senga_categories.each do |sc| %>
+                      <%=link_to sc.category.name, senga_list_path(category: sc.category.id,type: 'category') %>
+                    <% end %>
+                  <% elsif s.class.name == "Paint"%>
+                    <% s.senga.senga_categories.each do |sc| %>
+                      <%=link_to sc.category.name, paint_list_path(category: sc.category.id,type: 'category') %>
+                    <% end %>
+                  <%end%>
                 </div>
                 
-                <p class="card-text text-center">
-                  <p class="favorite text-center">
-                  お気に入り<%= s.senga_likes.length %>件
+                <% if s.class.name == "Senga" %>
+                  <p class="card-text text-center">
+                    <p class="favorite text-center">
+                    お気に入り<%= s.senga_likes.length %>件
+                    </p>
                   </p>
-                </p>
-                
+                <% end %>
               </div>
             </div>
           </div>

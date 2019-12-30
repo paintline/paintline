@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  root 'home#index'
+  root 'home#paint_list'
 
   #新規登録
   get '/sign_up' => 'users#sign_up', as: :sign_up
@@ -32,6 +32,10 @@ Rails.application.routes.draw do
 #新規投稿-----------------------------------------------
 
   get 'new/:model' => 'home#new', as: :new 
+
+#通知-----------------------------------------------
+
+ get '/event' => 'event#notification', as: :event
   
 #プロフィール-----------------------------------------------
 

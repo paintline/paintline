@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191229062138) do
+ActiveRecord::Schema.define(version: 20191230050716) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "events", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "senga_id"
+    t.string "event_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["senga_id"], name: "index_events_on_senga_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
   end
 
   create_table "paints", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -76,6 +86,8 @@ ActiveRecord::Schema.define(version: 20191229062138) do
     t.string "image"
   end
 
+  add_foreign_key "events", "sengas"
+  add_foreign_key "events", "users"
   add_foreign_key "paints", "sengas"
   add_foreign_key "paints", "users"
   add_foreign_key "senga_categories", "categories"
