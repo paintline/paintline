@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -6,41 +6,59 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      
+        
         <li class="nav-item">
-          <%= link_to 'ホーム',root_path %>
+          <%= link_to root_path do %>
+            <%= image_tag('home.gif',:class => "nav_menu1")%>
+          <% end %>
         </li>
         
         <li class="nav-item">
-          <%= link_to 'マイページ',profile_path(current_user) %>
+          <%= link_to profile_path(current_user) do %>
+            <%= image_tag('mypage.gif',:class => "nav_menu2")%>
+          <% end %>
         </li>
         
         <li class="nav-item">
-          <%= link_to '線画を投稿する',sengas_path %>
+          <%= link_to sengas_path do %>
+            <%= image_tag('senga_toukou.gif',:class => "nav_menu3")%>
+          <% end %>
         </li>
         
         <li class="nav-item">
-          <%= link_to '線画一覧',senga_list_path %>
+          <%= link_to senga_list_path do %>
+            <%= image_tag('senga_list.gif',:class => "nav_menu4")%>
+          <% end %>
         </li>
         
         <li class="nav-item">
-          <%= link_to '投稿線画一覧',senga_list_path(user_id: current_user.id) %>
+          <%= link_to senga_list_path(user_id: current_user.id) do %>
+            <%= image_tag('mysengalist.gif',:class => "nav_menu4")%>
+          <% end %>
         </li>
         
         <li class="nav-item">
-          <%= link_to 'お気に入り一覧',senga_list_path(type: 'like') %>
+          <%= link_to senga_list_path(type: 'like') do %>
+            <%= image_tag('okiniiri.gif',:class => "nav_menu4")%>
+          <% end %>
         </li>
         
         <li class="nav-item">
-          <%= link_to '申請済み一覧',senga_list_path(type: 'requests') %>
+          <%= link_to senga_list_path(type: 'requests') do %>
+            <%= image_tag('sinnseiitirann.gif',:class => "nav_menu4")%>
+          <% end %>
         </li>
         
         <li class="nav-item">
-          <%= link_to '許可済み一覧',senga_list_path(type: 'permitted') %>
+          <%= link_to senga_list_path(type: 'permitted') do %>
+            <%= image_tag('sinnseikyokaitirann.gif',:class => "nav_menu4")%>
+          <% end %>
         </li>
         
         <li class="nav-item">
-          <%= link_to 'サインアウト',sign_out_path %>
+          <%= link_to sign_out_path do %>
+            <%= image_tag('sign_out.gif',:class => "nav_menu4")%>
+          <% end %>
         </li>
     </ul>
   </div>
