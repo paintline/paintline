@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <%= image_tag('menu.gif',:class => "nav_menu2")%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -24,16 +24,16 @@
             <%= image_tag('senga_toukou.gif',:class => "nav_menu3")%>
           <% end %>
         </li>
-        
+
         <li class="nav-item">
-          <%= link_to senga_list_path do %>
-            <%= image_tag('senga_list.gif',:class => "nav_menu4")%>
+          <%= link_to senga_list_path(user_id: current_user.id) do %>
+            <%= image_tag('mysengalist.gif',:class => "nav_menu4")%>
           <% end %>
         </li>
         
         <li class="nav-item">
-          <%= link_to senga_list_path(user_id: current_user.id) do %>
-            <%= image_tag('mysengalist.gif',:class => "nav_menu4")%>
+          <%= link_to senga_list_path do %>
+            <%= image_tag('senga_list.gif',:class => "nav_menu4")%>
           <% end %>
         </li>
         
