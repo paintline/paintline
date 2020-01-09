@@ -10,10 +10,7 @@
 }
 
 .logo{
-  max-width: 300px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
+  max-width: 100%;
 }
 
 .btn-square {
@@ -33,7 +30,7 @@
 }
 
 .wrapper {    
-	margin-top: 80px;
+	margin-top: 20px;
 	margin-bottom: 20px;
 }
 
@@ -42,7 +39,6 @@
   max-width: 420px;
   padding: 30px 38px 66px;
   margin: 0 auto;
-  background-color: #eee;
   border: 3px dotted rgba(0,0,0,0.1);  
   }
 

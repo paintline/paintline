@@ -3,9 +3,11 @@
   <div class="album py-5 bg-light">
     <div class="container">
       <div class="row">
+        
         <% @pictures.each do |s| %>
           <div class="col-md-4">
             <div class="card mb-4 box-shadow">
+              
               <% if s.class.name == "Senga" %>
                 <h4 class="card-title text-center">
                   <%= s.tittle %>
@@ -26,6 +28,17 @@
                 <% end %>
               <% end %>
               <div class="card-body">
+                
+                <% if s.class.name == "Senga"%>
+                  <!-- 線画投稿者の情報 -->
+                  <div class="text-center">
+                    <div style="background: url('<%= image_url(s.user) %>'); background-position: center; background-size: cover" class="image"></div>
+                    <p>線画投稿者<%= link_to s.user.name, profile_path(s.user) %></p>
+                  </div>
+                <% else %>
+
+                <% end %>
+                
                 <p class="card-text text-center">
                   <div class="box3">
                     <span class="box-title">依頼内容</span>
@@ -57,6 +70,7 @@
             </div>
           </div>
         <% end %>
+        
       </div>
     </div>
   </div>

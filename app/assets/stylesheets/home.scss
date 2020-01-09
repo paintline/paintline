@@ -12,24 +12,15 @@
     padding-right: 20px;
     padding-left: 20px;
 }
-.nav_menu1{
-    width: 150px;
-    height: 50px;
-}
-.nav_menu2{
-    width: 150px;
-    height: 50px;
-}
-.nav_menu3{
-    width: 150px;
-    height: 50px;
-}
-.nav_menu4{
-    width: 150px;
-    height: 50px;
+.nav_menu{
+    width: 180px;
+    height: 55px;
 }
 
-.nav_menu{
-    width: 150px;
-    height: 50px;
+.sticky-top {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    box-shadow: 1px 1px 1px 1px;
 }

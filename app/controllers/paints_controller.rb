@@ -1,19 +1,27 @@
 class PaintsController < ApplicationController
         
-    def index
-        @paints = Paint.new
+    def paint_like
         # find_by 特定の値を検索、user_idがcurrent_user.idでありsenga_idがparams[:id]である時に実行
-        if SengaLike.find_by(:user_id => current_user.id , :senga_id => params[:id] )
- 
+        if PaintLike.find_by(:user_id => current_user.id , :paint_id => params[:id] )
+            
+            # paint_likeのuser_idがcurrent_user.idでありsenga_idがparams[:id]である時
+            paint_like = PaintLike.find_by(:paint_id => params[:id],:user_id => current_user.id )
+            #
+            paint_like.destroy
+            redirect_back(fallback_location: root_path, notice: "お気に入り削除しました")
+            
         else
             
-            senga_like = SengaLike.new(:senga_id => params[:senga_id],:user_id => current_user.id )
-            if senga_like.save
+            paint_like = PaintLike.new(:paint_id => params[:id],:user_id => current_user.id )
+            if paint_like.save
             # 成功
+              redirect_back(fallback_location: root_path, notice: "お気に入り登録しました")
               
             else
               # 失敗
               flash[:danger] = "お気に入り登録に失敗しました。"
+              redirect_to sengas_path 
+              
             end
         end
     end

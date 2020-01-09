@@ -1,3 +1,26 @@
 // Place all the styles related to the profile controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile{
+    
+    .image{
+
+    .p_image{
+        max-width: 350px;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+  }
+}
+
+.profile{
+    padding: 2rem 1rem;
+    border-radius: 0.3rem;
+}
+
+.image_p{
+    border-radius: 50%;
+    object-fit:cover;
+}

@@ -1,20 +1,32 @@
 <%= render partial: 'common/navi' %>
 
-<div class="profile">
-  
-  <div class="image">
-    <div style="background: url('<%= image_url(@user) %>'); background-position: 50%; background-size: cover;"></div>
-  </div>
-  <div class="info">
-    
-    <div class="name">
-      <h1><%= @user.name %></h1>
+<div class="user container">
+  <!-- プロフィール部分 -->
+  <div class="profile">
+    <div class="image">
+      <div style="background: url('<%= image_url(@user) %>'); background-position: 50%; background-size: cover;"></div>
     </div>
-    
+    <div class="info">
+      <div class="name">
+        <%= @user.name %>
+        <div class="actions">
+          <% if @user.id == current_user.id %>
+          <div class="edit">
+            <%= link_to 'プロフィールを編集する' ,profile_edit_path %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="status">
+        <p class="posts_count">
+          線画投稿数<%= @senga.length %>件
+        </p>
+        <p class="posts_count">
+          依頼完遂数<%= @paint.length %>件
+        </p>
+      </div>
+    </div>
   </div>
-  
 </div>
 
-<%= @user.id %>
-<%= link_to '編集する' ,profile_edit_path %>
 <%= render partial: 'common/footer' %>

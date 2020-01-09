@@ -55,8 +55,8 @@ class UsersController < ApplicationController
   def profile
     #データ取得
     @user = User.find(params[:id])
-    @senga = Senga.where(user_id: current_user.id)
-    @paint = Paint.where(user_id: current_user.id)
+    @senga = Senga.where(user_id: @user.id)
+    @paint = Paint.where(user_id: @user.id)
   end
   
   def profile_edit
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   
   def update
     current_user.update(user_params)
-    redirect_to profile_edit_path
+    redirect_to profile_path(current_user)
   end
   
 #--------------------------------------------------------------

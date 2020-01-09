@@ -14,20 +14,24 @@ Rails.application.routes.draw do
   #サインアウト
   get '/sogn_out' => 'users#sign_out', as: :sign_out
 
-#一覧関連-----------------------------------------------
+#投稿作品関連-----------------------------------------------
 
   resources :sengas
   
   #線画一覧
   get 'senga/list' => 'home#senga_list', as: :senga_list
   
+  #お気に入り
   get 'senga/like/(:id)' => 'sengas#senga_like', as: :senga_like
+  get 'paint/like/(:id)' => 'paints#paint_like', as: :paint_like
   
   resources :paints
   
   get 'paint/list' => 'home#paint_list', as: :paint_list
   
   get 'create/:id/png' => 'home#create_png', as: :create_png
+  
+  delete 'sengas/(:id)' => 'senngas#destroy'
   
 #新規投稿-----------------------------------------------
 

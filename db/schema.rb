@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20191230050716) do
+ActiveRecord::Schema.define(version: 20200109060457) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
@@ -26,6 +26,15 @@ ActiveRecord::Schema.define(version: 20191230050716) do
     t.datetime "updated_at", null: false
     t.index ["senga_id"], name: "index_events_on_senga_id"
     t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "paint_likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id"
+    t.bigint "paint_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["paint_id"], name: "index_paint_likes_on_paint_id"
+    t.index ["user_id"], name: "index_paint_likes_on_user_id"
   end
 
   create_table "paints", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -88,6 +97,8 @@ ActiveRecord::Schema.define(version: 20191230050716) do
 
   add_foreign_key "events", "sengas"
   add_foreign_key "events", "users"
+  add_foreign_key "paint_likes", "paints"
+  add_foreign_key "paint_likes", "users"
   add_foreign_key "paints", "sengas"
   add_foreign_key "paints", "users"
   add_foreign_key "senga_categories", "categories"

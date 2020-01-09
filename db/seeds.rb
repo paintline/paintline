@@ -8,5 +8,5 @@
 
 Category.create(:name => '人物画')
 Category.create(:name => '生物画')
+Category.create(:name => '静物画')
 Category.create(:name => '風景画')
-

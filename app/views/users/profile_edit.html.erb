@@ -1,7 +1,7 @@
 <%= render partial: 'common/navi' %>
 
 <!-- プロフィールコンテンツ部分 -->
-<section class="jumbotron text-center">
+<section class="profile text-center">
   <div class="container">
     
     <%= form_for current_user, url: profile_edit_path, method: :patch do |f| %>
@@ -9,9 +9,9 @@
       <!-- 投稿画像 -->
       <div class="image">
         <% if current_user.image.present? %>
-          <%= image_tag current_user.image, id: :img_prev , :size =>'700x700' %>
+          <%= image_tag current_user.image, id: :img_prev , :size =>'320x320' , class: "image_p"%>
         <% else %>
-          <%= image_tag "https://dummyimage.com/200x200/000/fff", id: :img_prev , :size =>'300x300' %>
+          <%= image_tag "https://dummyimage.com/200x200/000/fff", id: :img_prev , :size =>'320x320' , class: "image_p"%>
         <% end %>
       </div>
   
@@ -37,4 +37,5 @@
     <% end %>
   </div>
 </section>
+
 <%= render partial: 'common/footer' %>

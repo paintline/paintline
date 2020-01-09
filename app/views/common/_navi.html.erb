@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-  <%= image_tag('menu.gif',:class => "nav_menu2")%>
+  <%= image_tag('menu.gif',:class => "nav_menu")%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,55 +9,55 @@
         
         <li class="nav-item">
           <%= link_to root_path do %>
-            <%= image_tag('home.gif',:class => "nav_menu1")%>
+            <%= image_tag('home.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to profile_path(current_user) do %>
-            <%= image_tag('mypage.gif',:class => "nav_menu2")%>
+            <%= image_tag('mypage.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to sengas_path do %>
-            <%= image_tag('senga_toukou.gif',:class => "nav_menu3")%>
+            <%= image_tag('senga_toukou.gif',:class => "nav_menu")%>
           <% end %>
         </li>
-
+        
         <li class="nav-item">
           <%= link_to senga_list_path(user_id: current_user.id) do %>
-            <%= image_tag('mysengalist.gif',:class => "nav_menu4")%>
+            <%= image_tag('mysengalist.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to senga_list_path do %>
-            <%= image_tag('senga_list.gif',:class => "nav_menu4")%>
+            <%= image_tag('senga_list.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to senga_list_path(type: 'like') do %>
-            <%= image_tag('okiniiri.gif',:class => "nav_menu4")%>
+            <%= image_tag('okiniiri.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to senga_list_path(type: 'requests') do %>
-            <%= image_tag('sinnseiitirann.gif',:class => "nav_menu4")%>
+            <%= image_tag('sinnseiitirann.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to senga_list_path(type: 'permitted') do %>
-            <%= image_tag('sinnseikyokaitirann.gif',:class => "nav_menu4")%>
+            <%= image_tag('sinnseikyokaitirann.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <li class="nav-item">
           <%= link_to sign_out_path do %>
-            <%= image_tag('sign_out.gif',:class => "nav_menu4")%>
+            <%= image_tag('sign_out.gif',:class => "nav_menu")%>
           <% end %>
         </li>
     </ul>

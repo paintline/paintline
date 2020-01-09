@@ -6,4 +6,9 @@ class Senga < ApplicationRecord
   has_many :senga_requests
   #mount_uploader :image, ImagesUploader
   mount_uploader :image, ImagesUploader
+  
+  validates :tittle, presence: true
+  validates :image, presence: true
+  validates :description, presence: true
+  validates :description, length: { minimum: 100 }
 end
