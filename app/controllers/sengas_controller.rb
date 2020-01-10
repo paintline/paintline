@@ -4,44 +4,46 @@ class SengasController < ApplicationController
 
     end
     
+    # 投稿処理
     def create
         
-         #線画のデータを登録する(.new)
-         senga = Senga.new(senga_params)
+        # 線画のデータを登録する(.new)
+        senga = Senga.new(senga_params)
          
-         #線画のデータをテーブルに保存する
-         if senga.save
-             
+        # 線画のデータをテーブルに保存する
+        if senga.save
+            
+            # カテゴリーを登録
             if params[:categories]
                 params[:categories].each do |c|
                     senga.senga_categories.create(:category_id => c)
                 end
             end
             
-            #PSDファイルじゃなかった場合
+            # PSDファイルじゃなかった場合
             if File.basename(senga.image.url).split('.')[1] != 'psd'
                 flash[:danger] = "psdデータを投稿してください。"
                 redirect_to sengas_path and return
             end
-              
-            # 成功
-            #senga = Senga.find(params[:id])
-            require 'psd'
-            @psd = PSD.new('/home/ec2-user/environment/paintline/public' + senga.image.url)
-            @psd.parse!
-            @psd.image.save_as_png '/home/ec2-user/environment/paintline/public' + senga.image.url + '.png'
-            flash[:succsess] = "画像投稿しました"
-            redirect_to senga_path
             
-            # 失敗
-            else
-            flash[:danger] = "投稿に失敗しました"
-            redirect_to sengas_path 
+            # PSDファイルの場合
+            if File.basename(senga.image.url).split('.')[1] == 'psd'
+                require 'psd'
+                @psd = PSD.new('/home/ec2-user/environment/paintline/public' + senga.image.url)
+                @psd.parse!
+                @psd.image.save_as_png '/home/ec2-user/environment/paintline/public' + senga.image.url + '.png'
+                flash[:succsess] = "画像投稿しました"
+                redirect_to senga_path
+            end
             
-         end
-        
+        # 失敗
+        else
+             flash[:danger] = "投稿に失敗しました"
+             redirect_to sengas_path 
+        end
     end
-    
+
+
     def show
         #sengaテーブルからIDを取得
         @senga = Senga.find(params[:id])

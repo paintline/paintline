@@ -20,9 +20,13 @@
         <%= image_tag "https://dummyimage.com/200x200/000/fff", id: :img_prev , class: 'new_image', :size =>'500x500' %>
       <% end %>
     </div>
+    
+    <!-- モデル名がpaintの場合表示【senga_id】 -->
     <% if model_name == 'paints' %>
       <%= s.hidden_field :senga_id,value: params[:senga_id] %>
     <% end %>
+    
+    <!-- モデル名がsengaの場合表示【タグ選択】 -->
     <% if model_name == 'sengas' %>
     　<div class="box10">
         <% Category.all.each do |c| %>
@@ -38,21 +42,19 @@
       <%= s.file_field :image ,id: :user_img%>
     </div>
     
+    <!-- モデル名がsengaの場合表示【タイトル】 -->
     <% if model_name == 'sengas' %>
-    
-      <!-- タイトル -->
       <div class="tittle_wrap">
         <%= s.text_field :tittle,placeholder: "タイトルを入力", :class => 'form-control'%>
       </div>
-        
     <% end %>
     
+    <!-- モデル名がpaintの場合表示【senga_id】 -->
     <% if model_name == 'paints' %>
-      <!-- 線画 -->
       <%= s.hidden_field :senga_id,:value => params[:senga_id] %>
     <% end %>
     
-    <!-- 説明文 -->
+    <!-- モデル名がsengaの場合表示 【説明文】-->
     <% if model_name == 'sengas' %>
       <div class="text_wrap">
         <%= s.text_area :description, placeholder: "依頼内容を入力 (100文字以内)", :class => 'form-control'%>
@@ -64,7 +66,6 @@
     <% end %>
     
     <!-- 送信ボタン -->
-    
     <% if model_name != 'paints' || model_name == 'paints' && current_user.senga_requests.find_by(:senga_id => params[:senga_id]) && current_user.senga_requests.find_by(:senga_id => params[:senga_id]).permission == true %>
       <div class="bottun">
         <%= s.submit '投稿する', :class => 'submit_class_name_here' %>

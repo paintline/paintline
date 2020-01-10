@@ -11,19 +11,43 @@
         <%= @user.name %>
         <div class="actions">
           <% if @user.id == current_user.id %>
-          <div class="edit">
+          <div class="edit pt-3">
             <%= link_to 'プロフィールを編集する' ,profile_edit_path %>
           </div>
           <% end %>
         </div>
       </div>
-      <div class="status">
-        <p class="posts_count">
-          線画投稿数<%= @senga.length %>件
-        </p>
-        <p class="posts_count">
-          依頼完遂数<%= @paint.length %>件
-        </p>
+      <div class="status pt-3">
+        <div class="U_senga">
+          <p class="posts_count">
+            線画投稿数<%= @senga.length %>件
+          </p>
+          <% if @senga.any? %>
+            <%= @senga.each do |s| %>
+              <%= link_to senga_path(s) do %>
+                <div class="box">
+                  <%= image_tag (s.image.url + '.png'), class: 'image' %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        
+        <div class="U_paint">
+          <p class="posts_count pt-3">
+            依頼完遂数<%= @paint.length %>件
+          </p>
+          <% if @paint.any? %>
+            <%= @paint.each do |s| %>
+              <%= link_to paint_path(s) do %>
+                <div class="box">
+                  <%= image_tag (s.image.url + '.png'), class: 'image' %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        
       </div>
     </div>
   </div>
