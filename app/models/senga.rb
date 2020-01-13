@@ -10,5 +10,5 @@ class Senga < ApplicationRecord
   validates :tittle, presence: true
   validates :image, presence: true
   validates :description, presence: true
-  validates :description, length: { minimum: 100 }
+  validates :description, length: { maximum: 100 }
 end

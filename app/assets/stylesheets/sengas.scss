@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.content{
+    padding: 4rem 2rem;
+    margin-bottom: 2rem;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    .container{
+        
+    }
+}
+
+
 .show_btn-square {
   display: inline-block;
   padding: 0.5em 1em;
@@ -17,6 +28,7 @@
   flex: 1 1 auto;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
 }
 
 .info{

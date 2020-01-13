@@ -10,36 +10,47 @@ class SengasController < ApplicationController
         # 線画のデータを登録する(.new)
         senga = Senga.new(senga_params)
          
-        # 線画のデータをテーブルに保存する
-        if senga.save
-            
-            # カテゴリーを登録
-            if params[:categories]
-                params[:categories].each do |c|
-                    senga.senga_categories.create(:category_id => c)
-                end
-            end
+        #ファイルが選択されているか
+        #logger.debug senga_params[:image].original_filename
+        #logger.debug 'aaaaaaaaaaaaaaaaaaaa'
+        
+        if senga_params[:image]
             
             # PSDファイルじゃなかった場合
-            if File.basename(senga.image.url).split('.')[1] != 'psd'
+            if senga_params[:image].original_filename.split('.')[1] != 'psd'
                 flash[:danger] = "psdデータを投稿してください。"
                 redirect_to sengas_path and return
             end
-            
-            # PSDファイルの場合
-            if File.basename(senga.image.url).split('.')[1] == 'psd'
-                require 'psd'
-                @psd = PSD.new('/home/ec2-user/environment/paintline/public' + senga.image.url)
-                @psd.parse!
-                @psd.image.save_as_png '/home/ec2-user/environment/paintline/public' + senga.image.url + '.png'
-                flash[:succsess] = "画像投稿しました"
-                redirect_to senga_path
+         
+            # 線画のデータをテーブルに保存する
+            if senga.save!
+                
+                # カテゴリーを登録
+                if params[:categories]
+                    params[:categories].each do |c|
+                        senga.senga_categories.create(:category_id => c)
+                    end
+                end
+                
+                # PSDファイルの場合
+                if File.basename(senga.image.url).split('.')[1] == 'psd'
+                    require 'psd'
+                    @psd = PSD.new('/home/ec2-user/environment/paintline/public' + senga.image.url)
+                    @psd.parse!
+                    @psd.image.save_as_png '/home/ec2-user/environment/paintline/public' + senga.image.url + '.png'
+                    flash[:succsess] = "画像投稿しました"
+                    redirect_to senga_path(senga.id)
+                end
+                
+            # 失敗
+            else
+                 flash[:danger] = "投稿に失敗しました"
+                 redirect_to sengas_path 
             end
-            
-        # 失敗
+        
         else
-             flash[:danger] = "投稿に失敗しました"
-             redirect_to sengas_path 
+            flash[:danger] = "ファイルを選択してください。"
+            redirect_to sengas_path 
         end
     end
 

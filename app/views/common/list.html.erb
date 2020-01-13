@@ -20,13 +20,13 @@
                 </h4>
               <% end %>
               
-              <!-- class名がSengaの場合 -->
+              <!-- class名がSengaの場合【画像】 -->
               <% if s.class.name == "Senga" %>
                 <%= link_to senga_path(s) do %>
                   <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
                 <% end %>
                 
-              <!-- class名がPaintの場合 -->
+              <!-- class名がPaintの場合【画像】 -->
               <% elsif s.class.name == "Paint"%>
                 <%= link_to paint_path(s) do %>
                   <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
@@ -34,7 +34,7 @@
               <% end %>
               <div class="card-body">
                 
-                <!-- class名がSengaの場合 -->
+                <!-- class名がSengaの場合【線画投稿者の名前】 -->
                 <% if s.class.name == "Senga"%>
                   <!-- 線画投稿者の情報 -->
                   <div class="text-center">

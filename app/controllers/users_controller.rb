@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def sign_up
   end
   
-    # ユーザー登録処理
+  # ユーザー登録処理
   def sign_up_process
     user = User.new(user_params)
     if user.save
@@ -15,7 +15,6 @@ class UsersController < ApplicationController
       flash[:danger] = "ユーザー登録に失敗しました。"
       redirect_to sign_up_path and return
     end
-    
   end
 
   def sign_in

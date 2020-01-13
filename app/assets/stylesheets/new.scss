@@ -2,31 +2,29 @@
   margin-left: auto;
   margin-right: auto; 
   text-align: center;
-  height: 100vh;
+  height: 900px;
 }
 
 .new_image{
     max-width: 100%; 
     height:auto;
     padding : 10px;
-    width: 500px;
-    height: 500px;
     margin-left: auto;
     margin-right: auto;
+    padding: 20px;
     object-fit: cover;      
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+    border-bottom-left-radius: 40px;
   }
 .new_post_wrap {
-  width: 90%;
+  width: 100%;
   background-color: white;
   height: 80vh;
   margin-left: auto;
   margin-right: auto; 
   text-align: center;
-  padding: 20px;
   h1 {
     font-size: 24px;
     text-align: center;
@@ -36,7 +34,7 @@
     clear: both;
     text-align: center;
     padding-top: 20px;
-    padding-bottom: 20px;
+    padding-bottom: 60px;
     
     .submit_class_name_here {
       margin-top: -50px;

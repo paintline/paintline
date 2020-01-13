@@ -31,31 +31,54 @@ class PaintsController < ApplicationController
         @paint = Paint.find(params[:id])
     end
     
+    # 投稿処理
     def create
-         paint = Paint.new(paint_params)
+        
+        # 線画のデータを登録する(.new)
+        paint = Paint.new(paint_params)
          
-         if paint.save
-             # 成功
-            flash[:succsess] = "画像投稿しました"
-              if File.basename(paint.image.url).split('.')[1] != 'psd'
-              flash[:danger] = "psdデータを投稿してください。"
-              redirect_to paints_path and return
-              end
-              
-              # 成功
-              #senga = Senga.find(params[:id])
-              require 'psd'
-              @psd = PSD.new('/home/ec2-user/environment/paintline/public' + paint.image.url)
-              @psd.parse!
-              @psd.image.save_as_png '/home/ec2-user/environment/paintline/public' + paint.image.url + '.png'
+        #ファイルが選択されているか
+        #logger.debug senga_params[:image].original_filename
+        #logger.debug 'aaaaaaaaaaaaaaaaaaaa'
         
-        redirect_to root_path
+        if paint_params[:image]
+            
+            # PSDファイルじゃなかった場合
+            if paint_params[:image].original_filename.split('.')[1] != 'psd'
+                flash[:danger] = "psdデータを投稿してください。"
+                redirect_to paints_path and return
+            end
+         
+            # 線画のデータをテーブルに保存する
+            if paint.save!
+                
+                # カテゴリーを登録
+                if params[:categories]
+                    params[:categories].each do |c|
+                        paint.paint_categories.create(:category_id => c)
+                    end
+                end
+                
+                # PSDファイルの場合
+                if File.basename(paint.image.url).split('.')[1] == 'psd'
+                    require 'psd'
+                    @psd = PSD.new('/home/ec2-user/environment/paintline/public' + paint.image.url)
+                    @psd.parse!
+                    @psd.image.save_as_png '/home/ec2-user/environment/paintline/public' + paint.image.url + '.png'
+                    flash[:succsess] = "画像投稿しました"
+                    redirect_to paint_path(paint.id)
+                end
+                
+            # 失敗
+            else
+                 flash[:danger] = "投稿に失敗しました"
+                 redirect_to paints_path 
+            end
         
-         else
-          # 失敗
-          flash[:danger] = paint.errors.full_messages
-          redirect_to sengas_path 
-         end
+        else
+            flash[:danger] = "ファイルを選択してください。"
+            redirect_to paints_path 
+        end
     end
 
     private

@@ -1,6 +1,6 @@
 <%= render partial: 'common/navi' %>
 
-<div class="user container">
+<div class="P_container">
   <!-- プロフィール部分 -->
   <div class="profile">
     <div class="image">
@@ -18,12 +18,13 @@
         </div>
       </div>
       <div class="status pt-3">
+        
         <div class="U_senga">
           <p class="posts_count">
             線画投稿数<%= @senga.length %>件
           </p>
           <% if @senga.any? %>
-            <%= @senga.each do |s| %>
+            <% @senga.each do |s| %>
               <%= link_to senga_path(s) do %>
                 <div class="box">
                   <%= image_tag (s.image.url + '.png'), class: 'image' %>
@@ -31,6 +32,7 @@
               <% end %>
             <% end %>
           <% end %>
+          <%= link_to '全て表示',senga_list_path() %>
         </div>
         
         <div class="U_paint">
@@ -38,19 +40,19 @@
             依頼完遂数<%= @paint.length %>件
           </p>
           <% if @paint.any? %>
-            <%= @paint.each do |s| %>
-              <%= link_to paint_path(s) do %>
+            <% @paint.each do |p| %>
+              <%= link_to paint_path(p) do %>
                 <div class="box">
-                  <%= image_tag (s.image.url + '.png'), class: 'image' %>
+                  <%= image_tag (p.image.url + '.png'), class: 'image' %>
                 </div>
               <% end %>
             <% end %>
           <% end %>
+          <%= link_to '全て表示',paint_list_path() %>
         </div>
         
       </div>
     </div>
   </div>
+  <%= render partial: 'common/footer' %>
 </div>
-
-<%= render partial: 'common/footer' %>
