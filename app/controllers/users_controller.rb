@@ -54,8 +54,8 @@ class UsersController < ApplicationController
   def profile
     #データ取得
     @user = User.find(params[:id])
-    @senga = Senga.where(user_id: @user.id ).limit(3)
-    @paint = Paint.where(user_id: @user.id ).limit(3)
+    @senga = Senga.where(user_id: @user.id ).limit(4)
+    @paint = Paint.where(user_id: @user.id ).limit(4)
   end
   
   def profile_edit
