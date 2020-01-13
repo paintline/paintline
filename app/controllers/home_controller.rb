@@ -7,7 +7,7 @@ class HomeController < ApplicationController
   def paint_list
     @pictures = Paint.all.page(params[:page]).per(5)
 
-    #render template: 'common/list'
+    render template: 'common/list'
   end
   
   #線画一覧

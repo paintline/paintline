@@ -1,0 +1,5 @@
+<%= render partial: 'common/navi' %>
+<% @pictures.each do |p| %>
+    <%= image_tag(p.image.url + '.png') %><br>
+    <%= image_tag(p.senga.image.url + '.png') %><br>
+<% end %>
