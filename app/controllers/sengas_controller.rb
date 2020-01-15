@@ -86,6 +86,14 @@ class SengasController < ApplicationController
         end
     end
     
+    #削除
+    def destroy
+        @pictures = Senga.find(params[:id])
+        @pictures.destroy
+        flash[:succsess] = "投稿を削除しました"
+        redirect_to senga_path
+    end
+    
     
     #申請
     def senga_request
@@ -98,6 +106,7 @@ class SengasController < ApplicationController
           SengaRequest.create(:user_id => current_user.id, :senga_id => params[:senga_id])
 
         end
+        flash[:succsess] = "申請しました"
         redirect_to senga_path(params[:senga_id])
     end
     

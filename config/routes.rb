@@ -31,7 +31,8 @@ Rails.application.routes.draw do
   
   get 'create/:id/png' => 'home#create_png', as: :create_png
   
-  delete 'sengas/(:id)' => 'senngas#destroy'
+  #削除
+  delete 'sengas/(:id)' => 'senngas#destroy', as: :senga_delete
   
 #新規投稿-----------------------------------------------
 

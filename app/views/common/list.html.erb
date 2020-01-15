@@ -13,6 +13,7 @@
                 <h4 class="card-title text-center">
                   <%= s.tittle %>
                 </h4>
+                
               <!-- class名がPaintの場合【タイトル】 -->
               <% elsif s.class.name == "Paint" %>
                 <h4 class="card-title text-center">
@@ -32,6 +33,7 @@
                   <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
                 <% end %>
               <% end %>
+              
               <div class="card-body">
                 
                 <!-- class名がSengaの場合【線画投稿者の名前】 -->
@@ -40,6 +42,11 @@
                   <div class="text-center">
                     <div style="background: url('<%= image_url(s.user) %>'); background-position: center; background-size: cover" class="image"></div>
                     <p>線画投稿者<%= link_to s.user.name, profile_path(s.user) %></p>
+                    <% if s.user_id == current_user.id %>
+                      <%= link_to senga_delete_path(s), method: :delete do %>
+                        <p>削除する</p>
+                      <% end %>
+                    <% end %>
                   </div>
                 <% else %>
                 <% end %>

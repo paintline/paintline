@@ -4,10 +4,9 @@
   <!-- プロフィール部分 -->
   <div class="profile">
     <div class="image">
-      <div style="background: url('<%= image_url(@user) %>'); background-position: 50%; background-size: cover;"></div>
-    </div>
+      <%= image_tag current_user.image, :size =>'320x320' , class: "image_p"%>
     <div class="info">
-      <div class="name">
+      <div class="name_info">
         <%= @user.name %>
         <div class="actions">
           <% if @user.id == current_user.id %>
@@ -32,7 +31,9 @@
               <% end %>
             <% end %>
           <% end %>
-          <%= link_to '全て表示',senga_list_path() %>
+        </div>
+        <div class="alllink">
+          <%= link_to '線画を全て表示',senga_list_path() %>
         </div>
         
         <div class="U_paint">
@@ -40,15 +41,17 @@
             依頼完遂数<%= @paint.length %>件
           </p>
           <% if @paint.any? %>
-            <% @paint.each do |p| %>
-              <%= link_to paint_path(p) do %>
+            <% @paint.each do |s| %>
+              <%= link_to paint_path(s) do %>
                 <div class="box">
-                  <%= image_tag (p.image.url + '.png'), class: 'image' %>
+                  <%= image_tag (s.image.url + '.png'), class: 'image' %>
                 </div>
               <% end %>
             <% end %>
           <% end %>
-          <%= link_to '全て表示',paint_list_path() %>
+        </div>
+        <div class="link">
+          <%= link_to '完成品を全て表示',senga_list_path() %>
         </div>
         
       </div>

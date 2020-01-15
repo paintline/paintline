@@ -1,7 +1,7 @@
 class Paint < ApplicationRecord
   belongs_to :user
   belongs_to :senga
-  has_many :paint_likes
+  has_many :paint_likes, dependent: :destroy
   mount_uploader :image, ImagesUploader
   before_create :event_new
   def event_new

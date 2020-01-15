@@ -26,13 +26,13 @@
             </p>
             <br>
             <% if @senga.user_id != current_user.id %>
-              <% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission != true %>
+              <!--% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission != true %-->
                 <% if SengaLike.find_by(:user_id => current_user.id , :senga_id => @senga.id )  %>
                 　<%= link_to 'お気に入りにから削除' ,senga_like_path(params[:id]), class: "show_btn-square" %>
                 <% else %>
                 　<%= link_to 'お気に入りに追加' ,senga_like_path(params[:id]) , class: "show_btn-square" %>
                 <% end %>
-              <% end %>
+              <!--% end %-->
             <% end %>
   
             <% if @senga.user_id != current_user.id %>

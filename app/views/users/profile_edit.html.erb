@@ -22,16 +22,16 @@
             </div>
         </div>
         
-        <%= f.label :name, "名前" %>
-        <%= f.text_field :name, placeholder: "名前を入力して下さい。" , class: 'form-control'%>
-      
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.text_field :email, placeholder: "メールアドレスを入力して下さい。", class: 'form-control' %>
+        <div class-"info">
+          <%= f.label :name, "名前" %>
+          <%= f.text_field :name, placeholder: "名前を入力して下さい。" , class: 'form-control'%>
         
-      <div class="bottun">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.text_field :email, placeholder: "メールアドレスを入力して下さい。", class: 'form-control' %>
+        </div>
         
-        <%= f.submit '変更する', :class => 'submit_class_name_here' %>
-        
+      <div class="bottun pt-1">
+        <%= f.submit '変更する', :class => 'submit_bittun' %>
       </div>
       
     <% end %>
