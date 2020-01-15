@@ -7,54 +7,63 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
         
+        <!--ホーム-->
         <li class="nav-item">
           <%= link_to root_path do %>
             <%= image_tag('home.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
+        <!--マイページ-->
         <li class="nav-item">
           <%= link_to profile_path(current_user) do %>
             <%= image_tag('mypage.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
+        <!--線画投稿-->
         <li class="nav-item">
           <%= link_to sengas_path do %>
             <%= image_tag('senga_toukou.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
+        <!--自分の線画リスト-->
         <li class="nav-item">
           <%= link_to senga_list_path(user_id: current_user.id) do %>
             <%= image_tag('mysengalist.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
+        <!--全体の線画リスト-->
         <li class="nav-item">
           <%= link_to senga_list_path do %>
             <%= image_tag('senga_list.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
+        <!--お気に入り-->
         <li class="nav-item">
-          <%= link_to senga_list_path(type: 'like') do %>
+          <%= link_to senga_list_path(type: 'senga_like') do %>
             <%= image_tag('okiniiri.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
+        <!--申請一覧-->
         <li class="nav-item">
           <%= link_to senga_list_path(type: 'requests') do %>
             <%= image_tag('sinnseiitirann.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
+        <!--申請許可-->
         <li class="nav-item">
           <%= link_to senga_list_path(type: 'permitted') do %>
             <%= image_tag('sinnseikyokaitirann.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
+        <!--サインアウト-->
         <li class="nav-item">
           <%= link_to sign_out_path do %>
             <%= image_tag('sign_out.gif',:class => "nav_menu")%>

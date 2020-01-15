@@ -40,7 +40,8 @@
                 <% if s.class.name == "Senga"%>
                   <!-- 線画投稿者の情報 -->
                   <div class="text-center">
-                    <div style="background: url('<%= image_url(s.user) %>'); background-position: center; background-size: cover" class="image"></div>
+                    <div style="background: url('<%= image_url(s.user) %>'); background-position: center; background-size: cover" class="image">
+                    </div>
                     <p>線画投稿者<%= link_to s.user.name, profile_path(s.user) %></p>
                     <% if s.user_id == current_user.id %>
                       <%= link_to senga_delete_path(s), method: :delete do %>

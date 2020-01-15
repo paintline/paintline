@@ -17,17 +17,17 @@ class HomeController < ApplicationController
     if params[:user_id]
       @pictures = Senga.where(:user_id => params[:user_id]).page(params[:page]).per(5)
     
-    #申請リスト
-    elsif params[:type] && params[:type] == 'requests'
-      @pictures = Senga.joins(:senga_requests).where(senga_requests:{user_id: current_user.id}).where.not(senga_requests:{permission: false}).page(params[:page]).per(5)
-    
     #線画のお気に入りリスト
-    elsif params[:type] && params[:type] == 'like'
+    elsif params[:type] && params[:type] == 'senga_like'
       @pictures = Senga.joins(:senga_likes).where(senga_likes:{user_id: current_user.id}).page(params[:page]).per(5)
       
     #完成品お気に入りリスト
-    elsif params[:type] && params[:type] == 'like'
-      @pictures = Senga.joins(:senga_likes).where(senga_likes:{user_id: current_user.id}).page(params[:page]).per(5)
+    elsif params[:type] && params[:type] == 'paint_like'
+      @pictures = Paint.joins(:paint_likes).where(paint_likes:{user_id: current_user.id}).page(params[:page]).per(5)
+    
+    #申請リスト
+    elsif params[:type] && params[:type] == 'requests'
+      @pictures = Senga.joins(:senga_requests).where(senga_requests:{user_id: current_user.id}).where.not(senga_requests:{permission: false}).page(params[:page]).per(5)
     
     #許可済み知スト
     elsif params[:type] && params[:type] == 'permitted'
@@ -52,6 +52,7 @@ class HomeController < ApplicationController
     
   end
   
+  #pngファイルの生成
   def create_png
     senga = Senga.find(params[:id])
     require 'psd'

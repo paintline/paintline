@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   
   #線画一覧
   get 'senga/list' => 'home#senga_list', as: :senga_list
-  
+
   #お気に入り
   get 'senga/like/(:id)' => 'sengas#senga_like', as: :senga_like
   get 'paint/like/(:id)' => 'paints#paint_like', as: :paint_like
@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   
 #プロフィール-----------------------------------------------
 
+  #編集
   get '/profile/edit' => 'users#profile_edit', as: :profile_edit
 
   get '/profile/(:id)' => 'users#profile', as: :profile
