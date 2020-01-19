@@ -42,6 +42,7 @@ class HomeController < ApplicationController
     elsif params[:type] && params[:type] == 'senga_rank'
       senga_like_count = Senga.joins(:senga_likes).group(:senga_id).count
       senga_liked_ids = Hash[senga_like_count.sort_by{ |_, v| -v }].keys
+      #oder
       @pictures = Senga.where(id: senga_liked_ids).page(params[:page]).per(6)
     
     #完成品のいいね順
@@ -49,7 +50,6 @@ class HomeController < ApplicationController
       paint_like_count = Paint.joins(:paint_likes).group(:paint_id).count
       paint_liked_ids = Hash[paint_like_count.sort_by{ |_, v| -v }].keys
       @pictures = Paint.where(id: paint_liked_ids).page(params[:page]).per(6)
-    
     
     else
       #線画リスト

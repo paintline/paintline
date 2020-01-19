@@ -5,7 +5,9 @@
 //サインイン関連
 
 .main_container{
-  background: image-url('background.gif')
+  background: image-url('background.gif');
+  height: 100vh;
+  background-size:cover;
 }
 
 .sign{
@@ -36,7 +38,7 @@
 }
 
 .wrapper {    
-	margin-top: 20px;
+	padding-top: 20px;
 	margin-bottom: 20px;
 }
 
