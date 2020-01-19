@@ -1,6 +1,13 @@
 <%= render partial: 'common/navi' %>
 <main role="main">
   <div class="album py-5 bg-light">
+    
+            <!--ユーザーリスト-->
+        <div class="rank_box">
+          <%= link_to '線画いいね順',senga_list_path(type: 'senga_rank') ,class: 'senga_rank' %>
+          <%= link_to '完成品いいね順',senga_list_path(type: 'paint_rank') ,class: 'paint_rank' %>
+        </div>
+    
     <div class="container">
       <div class="row">
         
@@ -83,6 +90,16 @@
                     </p>
                   </p>
                 <% end %>
+                
+                <!-- class名がPaintの場合 -->
+                <% if s.class.name == "Paint" %>
+                  <p class="card-text text-center">
+                    <p class="favorite text-center">
+                    お気に入り<%= s.paint_likes.length %>件
+                    </p>
+                  </p>
+                <% end %>
+                
               </div>
             </div>
           </div>

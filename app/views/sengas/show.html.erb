@@ -52,18 +52,21 @@
           <p>
             申請者一覧
           </p>
-          <ul>
+          <ul class="Applicant">
             <% @senga.senga_requests.where(permission: nil).or(@senga.senga_requests.where(permission: true)).each do |r| %>
               <li>
+                <!--申請者一覧-->
                 <%=link_to r.user.name, profile_path(r.user) %>
+                
                 <% if r.permission != true %>
-                  <%= link_to '申請許可' , senga_request_commit_path(r.id) %>
-                <% else%>
-                  <%= link_to '申請削除' , senga_request_commit_path(r.id) %>
+                  <%= link_to '許可' , senga_request_commit_path(r.id) , class: "btn btn-large"%>
+                <% elsif r.permission == true %>
+                  <%= link_to '×' , senga_request_commit_path(r.id) %>
                 <% end %>
-                <% if r.permission != false %>
-                  <%= link_to '不許可' , senga_request_deny_path(r.id) %>
+                <% if r.permission != true %>
+                  <%= link_to '不許可' , senga_request_deny_path(r.id) , class: "btn btn-large"%>
                 <% end %>
+                
               </li>
             <% end %>
           </ul>

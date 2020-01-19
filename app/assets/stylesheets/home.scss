@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//ナビ関連
 .fixed-top{
     position: relative !important;
 }
@@ -23,4 +24,8 @@
     top: 0;
     z-index: 1020;
     box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.nill{
+    height: 30px;
 }

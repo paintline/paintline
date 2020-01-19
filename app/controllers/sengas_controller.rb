@@ -56,7 +56,8 @@ class SengasController < ApplicationController
 
 
     def show
-
+        #sengaテーブルからIDを取得
+        @senga = Senga.find(params[:id])
     end
     
     def senga_like

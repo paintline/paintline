@@ -3,6 +3,11 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //サインイン関連
+
+.main_container{
+  background: image-url('background.gif')
+}
+
 .sign{
   margin-left: auto;
   margin-right: auto;
@@ -37,7 +42,7 @@
 
 
 .form-signin {
-  max-width: 420px;
+  max-width: 320px;
   padding: 30px 38px 66px;
   margin: 0 auto;
   border: 3px dotted rgba(0,0,0,0.1);  

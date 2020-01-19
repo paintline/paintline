@@ -4,7 +4,7 @@
   <!-- プロフィール部分 -->
   <div class="profile">
     <div class="image">
-      <%= image_tag current_user.image, :size =>'320x320' , class: "image_p"%>
+      <%= image_tag @user.image, :size =>'320x320' , class: "image_p"%>
     <div class="info">
       <div class="name_info">
         <%= @user.name %>

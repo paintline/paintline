@@ -1,3 +1,25 @@
+
+//リスト情報box
+.rank_box{
+    width: 350px;
+    text-align: center;
+    padding: 30px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 40px;
+　　background: #ffeaea;
+    box-shadow: 0px 0px 0px 10px #ffeaea;
+    border: dashed 2px #ffc3c3;
+    border-radius: 8px;
+    
+    .senga_rank{
+        padding: 10px;
+    }
+    .paint_rank{
+        padding: 10px;
+    }
+}
+
 .list_image{
     width:100%;
     max-width: 100%;

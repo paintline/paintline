@@ -5,7 +5,7 @@ class HomeController < ApplicationController
   
   #完成品一覧
   def paint_list
-    @pictures = Paint.all.page(params[:page]).per(5)
+    @pictures = Paint.all.order(created_at: :desc).page(params[:page]).per(6)
 
     render template: 'common/list'
   end
@@ -15,31 +15,45 @@ class HomeController < ApplicationController
     
     #自分の投稿リスト
     if params[:user_id]
-      @pictures = Senga.where(:user_id => params[:user_id]).page(params[:page]).per(5)
+      @pictures = Senga.where(:user_id => params[:user_id]).order(created_at: :desc).page(params[:page]).per(6)
     
     #線画のお気に入りリスト
     elsif params[:type] && params[:type] == 'senga_like'
-      @pictures = Senga.joins(:senga_likes).where(senga_likes:{user_id: current_user.id}).page(params[:page]).per(5)
+      @pictures = Senga.joins(:senga_likes).where(senga_likes:{user_id: current_user.id}).order(created_at: :desc).page(params[:page]).per(6)
       
     #完成品お気に入りリスト
     elsif params[:type] && params[:type] == 'paint_like'
-      @pictures = Paint.joins(:paint_likes).where(paint_likes:{user_id: current_user.id}).page(params[:page]).per(5)
+      @pictures = Paint.joins(:paint_likes).where(paint_likes:{user_id: current_user.id}).order(created_at: :desc).page(params[:page]).per(6)
     
     #申請リスト
     elsif params[:type] && params[:type] == 'requests'
-      @pictures = Senga.joins(:senga_requests).where(senga_requests:{user_id: current_user.id}).where.not(senga_requests:{permission: false}).page(params[:page]).per(5)
+      @pictures = Senga.joins(:senga_requests).where(senga_requests:{user_id: current_user.id}).where.not(senga_requests:{permission: false}).order(created_at: :desc).page(params[:page]).per(6)
     
     #許可済み知スト
     elsif params[:type] && params[:type] == 'permitted'
-      @pictures = Senga.joins(:senga_requests).where(senga_requests:{user_id: current_user.id,permission: true}).page(params[:page]).per(5)
+      @pictures = Senga.joins(:senga_requests).where(senga_requests:{user_id: current_user.id,permission: true}).order(created_at: :desc).page(params[:page]).per(6)
     
     #カテゴリー検索リスト
     elsif params[:type] && params[:type] == 'category'
-      @pictures = Senga.joins(:senga_categories).where(senga_categories:{category_id: params[:category]}).page(params[:page]).per(5)
+      @pictures = Senga.joins(:senga_categories).where(senga_categories:{category_id: params[:category]}).order(created_at: :desc).page(params[:page]).per(6)
+    
+    
+    #線画のいいね順
+    elsif params[:type] && params[:type] == 'senga_rank'
+      senga_like_count = Senga.joins(:senga_likes).group(:senga_id).count
+      senga_liked_ids = Hash[senga_like_count.sort_by{ |_, v| -v }].keys
+      @pictures = Senga.where(id: senga_liked_ids).page(params[:page]).per(6)
+    
+    #完成品のいいね順
+    elsif params[:type] && params[:type] == 'paint_rank'
+      paint_like_count = Paint.joins(:paint_likes).group(:paint_id).count
+      paint_liked_ids = Hash[paint_like_count.sort_by{ |_, v| -v }].keys
+      @pictures = Paint.where(id: paint_liked_ids).page(params[:page]).per(6)
+    
     
     else
       #線画リスト
-      @pictures = Senga.all.page(params[:page]).per(5)
+      @pictures = Senga.all.order(created_at: :desc).page(params[:page]).per(6)
 
     end
     
