@@ -35,9 +35,9 @@ class SengasController < ApplicationController
                 # PSDファイルの場合
                 if File.basename(senga.image.url).split('.')[1] == 'psd'
                     require 'psd'
-                    @psd = PSD.new('/home/ec2-user/environment/paintline/public' + senga.image.url)
+                    @psd = PSD.new(Rails.root.to_s + '/public' + senga.image.url)
                     @psd.parse!
-                    @psd.image.save_as_png '/home/ec2-user/environment/paintline/public' + senga.image.url + '.png'
+                    @psd.image.save_as_png Rails.root.to_s + '/public' + senga.image.url + '.png'
                     flash[:succsess] = "画像投稿しました"
                     redirect_to senga_path(senga.id)
                 end
