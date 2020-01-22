@@ -2,7 +2,6 @@
 	<div class="wrapper">
 		<div action="" method="post" name="Login_Form" class="form-signin">   
 			<%= image_tag('logo2.gif',:class => "logo")%>
-		    <hr class="colorgraph"><br>
 		    
 			  <%= form_for User.new, url: sign_in_path do |f| %>
   			  
@@ -15,7 +14,7 @@
 			  </div>
   			 
 			  <div class="sign_up_link">
-	     　　   <p>新規登録しますか？<br> <%= link_to "新規登録する", "/sign_up" %></p>
+	      		<p>新規登録しますか？<br> <%= link_to "新規登録する", "/sign_up" %></p>
 			  </div>
   			  
 			  <% end %>

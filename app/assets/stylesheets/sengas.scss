@@ -2,17 +2,33 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+//線画詳細内部
 .content{
     padding: 4rem 2rem;
     margin-bottom: 2rem;
     background-color: #fff;
     border-radius: 0.3rem;
+    
     .container{
         
+        .senga_info{
+            -webkit-box-flex: 1;
+            flex: 1 1 auto;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+      
+            .info{
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+      }
     }
+  }
 }
 
 
+//ボタン
 .show_btn-square {
   display: inline-block;
   padding: 0.5em 1em;
@@ -23,21 +39,11 @@
   border-bottom: solid 4px #627295;
   border-radius: 3px;
 }
-.senga_info{
-  -webkit-box-flex: 1;
-  flex: 1 1 auto;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
 
-.info{
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-}
 
-//依頼内容枠
+///依頼内容,タグ枠
+
+//一覧時の依頼内容枠
 .box3 {
     max-width : 400px;
     position: relative;
@@ -67,7 +73,7 @@
     }
 }
 
-//依頼内容枠
+//詳細時の依頼内容枠
 .box9 {
     max-width : 400px;
     position: relative;
@@ -97,7 +103,7 @@
     }
 }
 
-//投稿タグ
+//投稿時のタグ選択枠
 .box10 {
     max-width : 400px;
     position: relative;
@@ -127,7 +133,7 @@
   }
 }
 
-//リストタグ
+//一覧時のタグ枠
 .box11 {
     max-width : 400px;
     position: relative;

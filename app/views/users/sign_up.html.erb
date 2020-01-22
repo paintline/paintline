@@ -2,7 +2,6 @@
 	<div class="wrapper">
 		<div action="" method="post" name="Login_Form" class="form-signin">       
 		    <%= image_tag('logo2.gif',:class => "logo")%>
-		    <hr class="colorgraph"><br>
 			  <%= form_for User.new, url: sign_up_path do |f| %>
 			  
 			  <%= f.text_field :name, placeholder: "ユーザーネーム" , :class => 'form-control' %> 
