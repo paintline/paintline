@@ -44,6 +44,8 @@ class HomeController < ApplicationController
       senga_liked_ids = Hash[senga_like_count.sort_by{ |_, v| -v }].keys
       #oder
       @pictures = Senga.where(id: senga_liked_ids).page(params[:page]).per(6)
+      
+      @pictures = Senga.joins(:senga_likes).group("categories.name").order('count_all DESC').count
     
     #完成品のいいね順
     elsif params[:type] && params[:type] == 'paint_rank'

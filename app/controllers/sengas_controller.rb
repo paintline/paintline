@@ -10,10 +10,6 @@ class SengasController < ApplicationController
         # 線画のデータを登録する(.new)
         senga = Senga.new(senga_params)
          
-        #ファイルが選択されているか
-        #logger.debug senga_params[:image].original_filename
-        #logger.debug 'aaaaaaaaaaaaaaaaaaaa'
-        
         if senga_params[:image]
             
             # PSDファイルじゃなかった場合

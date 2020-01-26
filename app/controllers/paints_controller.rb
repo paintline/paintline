@@ -36,10 +36,6 @@ class PaintsController < ApplicationController
         
         # 線画のデータを登録する(.new)
         paint = Paint.new(paint_params)
-         
-        #ファイルが選択されているか
-        #logger.debug senga_params[:image].original_filename
-        #logger.debug 'aaaaaaaaaaaaaaaaaaaa'
         
         if paint_params[:image]
             
@@ -60,19 +56,19 @@ class PaintsController < ApplicationController
                 end
                 
                 # PSDファイルの場合
-                if File.basename(senga.image.url).split('.')[1] == 'psd'
+                if File.basename(paint.image.url).split('.')[1] == 'psd'
                     require 'psd'
-                    @psd = PSD.new(Rails.root.to_s + '/public' + senga.image.url)
+                    @psd = PSD.new(Rails.root.to_s + '/public' + paint.image.url)
                     @psd.parse!
-                    @psd.image.save_as_png Rails.root.to_s + '/public' + senga.image.url + '.png'
+                    @psd.image.save_as_png Rails.root.to_s + '/public' + paint.image.url + '.png'
                     flash[:succsess] = "画像投稿しました"
-                    redirect_to senga_path(senga.id)
+                    redirect_to paint_path(paint.id)
                 end
                 
             # 失敗
             else
-                 flash[:danger] = "投稿に失敗しました"
-                 redirect_to paints_path 
+                flash[:danger] = "投稿に失敗しました"
+                redirect_to paints_path 
             end
         
         else

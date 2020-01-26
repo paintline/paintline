@@ -49,11 +49,6 @@
       </div>
     <% end %>
     
-    <!-- モデル名がpaintの場合表示【senga_id】 -->
-    <% if model_name == 'paints' %>
-      <%= s.hidden_field :senga_id,:value => params[:senga_id] %>
-    <% end %>
-    
     <!-- モデル名がsengaの場合表示 【説明文】-->
     <% if model_name == 'sengas' %>
       <div class="text_wrap">

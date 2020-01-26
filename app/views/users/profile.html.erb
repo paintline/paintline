@@ -4,23 +4,27 @@
   <!-- プロフィール部分 -->
   <div class="profile">
     <div class="image">
-      <%= image_tag @user.image, :size =>'320x320' , class: "image_p"%>
+      <% if current_user.image.present? %>
+        <%= image_tag @user.image, id: :img_prev , :size =>'220x220' , class: "image_p"%>
+      <% else %>
+        <%= image_tag "https://dummyimage.com/200x200/000/fff", id: :img_prev , :size =>'220x220' , class: "image_p"%>
+      <% end %>
     <div class="info">
-      <div class="name_info">
-        <%= @user.name %>
-        <div class="actions">
-          <% if @user.id == current_user.id %>
+      <div class="actions">
+        <% if @user.id == current_user.id %>
           <div class="edit pt-3">
             <%= link_to 'プロフィールを編集する' ,profile_edit_path %>
           </div>
-          <% end %>
-        </div>
+        <% end %>
+      </div>
+      <div class="name_info">
+        <h1><%= @user.name %></h1>
       </div>
       <div class="status pt-3">
         
         <div class="U_senga">
           <p class="posts_count">
-            線画投稿数 計<%=link_to @senga_all.length ,senga_list_path(user_id: @user.id) %>件
+            線画投稿数 全<%=link_to @senga_all.length ,senga_list_path(user_id: @user.id) %>件
           </p>
           <% if @senga.any? %>
             <% @senga.each do |s| %>
@@ -35,7 +39,7 @@
         
         <div class="U_paint">
           <p class="posts_count">
-            依頼完遂数 計<%=link_to @paint_all.length ,paint_list_path(user_id: @user.id) %>件
+            依頼完遂数 全<%=link_to @paint_all.length ,paint_list_path(user_id: @user.id) %>件
           </p>
           <% if @paint.any? %>
             <% @paint.each do |s| %>
