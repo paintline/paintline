@@ -24,7 +24,8 @@
       border-top-right-radius: 40px;
       border-bottom-right-radius: 40px;
       border-bottom-left-radius: 40px;
-  
+    }
+    
     h1 {
       font-size: 24px;
       text-align: center;
@@ -48,27 +49,10 @@
       max-height: 200px;
       margin-left: auto;
       margin-right: auto;
-      
-        .form-control{
-      height: 10vh;
-      }
     }
     
-    .category_menu{
-      display: inline-block;
-      width: 80%;
-      padding-left: 40px; 
-      padding-right: 40px; 
-      padding-top: 20px; 
-      padding-top: 20px; 
-      
-      .control{
-        font-size: 40px;
-      }
-    }
   }
  }
-}
 
 .bottun{
   clear: both;
