@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if user.save
      # 登録が成功したらサインインしてトップページへ
       user_sign_in(user)
-      redirect_to root_path
+      redirect_to profile_path(current_user)
     else
       # 登録が失敗したらユーザー登録ページへ
       flash[:danger] = "ユーザー登録に失敗しました。"
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     user = User.find_by(:email => user_params[:email])
     if user && user.authenticate(user_params[:password])
       session[:user_id] = user.id
-      redirect_to root_path
+      redirect_to profile_path(current_user)
     else
       flash[:danger] = "サインインに失敗しました。"
       redirect_to sign_in_path and return

@@ -6,14 +6,7 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-        
-        <!--ホーム-->
-        <li class="nav-item">
-          <%= link_to root_path do %>
-            <%= image_tag('home.gif',:class => "nav_menu")%>
-          <% end %>
-        </li>
-        
+      
         <!--マイページ-->
         <li class="nav-item">
           <%= link_to profile_path(current_user) do %>
@@ -28,13 +21,6 @@
           <% end %>
         </li>
         
-        <!--自分の線画リスト-->
-        <li class="nav-item">
-          <%= link_to senga_list_path(user_id: current_user.id) do %>
-            <%= image_tag('mysengalist.gif',:class => "nav_menu")%>
-          <% end %>
-        </li>
-        
         <!--全体の線画リスト-->
         <li class="nav-item">
           <%= link_to senga_list_path do %>
@@ -42,31 +28,38 @@
           <% end %>
         </li>
         
-        <!--お気に入り-->
+        <!--完成品一覧-->
         <li class="nav-item">
-          <%= link_to senga_list_path(type: 'senga_like') do %>
-            <%= image_tag('okiniiri.gif',:class => "nav_menu")%>
+          <%= link_to root_path do %>
+            <%= image_tag('kannsei_list.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <!--申請一覧-->
         <li class="nav-item">
           <%= link_to senga_list_path(type: 'requests') do %>
-            <%= image_tag('sinnseiitirann.gif',:class => "nav_menu")%>
+            <%= image_tag('sinnsei_list.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <!--申請許可-->
         <li class="nav-item">
           <%= link_to senga_list_path(type: 'permitted') do %>
-            <%= image_tag('sinnseikyokaitirann.gif',:class => "nav_menu")%>
+            <%= image_tag('sinnseikyoka_list.gif',:class => "nav_menu")%>
+          <% end %>
+        </li>
+        
+        <!--ヘルプ-->
+        <li class="nav-item">
+          <%= link_to senga_list_path(type: 'permitted') do %>
+            <%= image_tag('help.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         
         <!--サインアウト-->
         <li class="nav-item">
           <%= link_to sign_out_path do %>
-            <%= image_tag('sign_out.gif',:class => "nav_menu")%>
+            <%= image_tag('signout.gif',:class => "nav_menu")%>
           <% end %>
         </li>
         <li>
