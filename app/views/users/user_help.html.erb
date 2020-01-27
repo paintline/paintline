@@ -1,47 +1,57 @@
 <%= render partial: 'common/navi' %>
-
-<div class="panel-group" id="accordion">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">グループ1</a>
-      </h4>
-    </div>
-    <div id="collapse3" class="panel-collapse collapse in">
-      <div class="panel-body">内容</div>
+<section class="content">
+  <div class="container">
+    <div class="panel-group" id="accordion">
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse3">投稿について</a>
+          </h4>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse in">
+          <div class="panel-body">線画投稿</div>
+        </div>
+        <div id="collapse3" class="panel-collapse collapse in">
+          <div class="panel-body">完成品投稿</div>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">マイページについて</a>
+          </h4>
+        </div>
+        <div id="collapse4" class="panel-collapse collapse">
+          <div class="panel-body">内容</div>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">申請について</a>
+          </h4>
+        </div>
+        <div id="collapse5" class="panel-collapse collapse">
+          <div class="panel-body">内容</div>
+        </div>
+      </div>
+      
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4 class="panel-title">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">投稿作品について</a>
+          </h4>
+        </div>
+        <div id="collapse6" class="panel-collapse collapse">
+          <div class="panel-body">内容</div>
+        </div>
+      </div>
+      
     </div>
   </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse4">グループ2</a>
-      </h4>
-    </div>
-    <div id="collapse4" class="panel-collapse collapse">
-      <div class="panel-body">内容</div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse5">グループ3</a>
-      </h4>
-    </div>
-    <div id="collapse5" class="panel-collapse collapse">
-      <div class="panel-body">内容</div>
-    </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <h4 class="panel-title">
-        <a data-toggle="collapse" data-parent="#accordion" href="#collapse6">グループ3</a>
-      </h4>
-    </div>
-    <div id="collapse6" class="panel-collapse collapse">
-      <div class="panel-body">内容</div>
-    </div>
-  </div>
-</div>
-
+</section>
 
 <%= render partial: 'common/footer' %>
