@@ -3,10 +3,10 @@
   <div class="album py-5 bg-light">
     
     <!--ユーザーリスト-->
-    <div class="rank_box">
-      <%= link_to '線画お気に入り順',senga_list_path(type: 'senga_rank') ,class: 'senga_rank' %>
-      <%= link_to '完成品お気に入り順',senga_list_path(type: 'paint_rank') ,class: 'paint_rank' %>
-    </div>
+    <!--div class="rank_box">
+      <!%= link_to '線画お気に入り順',senga_list_path(type: 'senga_rank') ,class: 'senga_rank' %>
+      <!%= link_to '完成品お気に入り順',senga_list_path(type: 'paint_rank') ,class: 'paint_rank' %>
+    </div-->
     
     <div class="container">
       <div class="row">
@@ -59,12 +59,24 @@
                 <% else %>
                 <% end %>
                 
-                <p class="card-text text-center">
-                  <div class="box3">
-                    <span class="box-title">依頼内容</span>
-                    <%= s.description %>
-                  </div>
-                </p>
+                <!-- class名がSengaの場合【画像】 -->
+                <% if s.class.name == "Senga" %>
+                  <p class="card-text text-center">
+                    <div class="box3">
+                      <span class="box-title">依頼内容</span>
+                      <%= s.description %>
+                    </div>
+                  </p>
+
+                <!-- class名がPaintの場合【画像】 -->
+                <% elsif s.class.name == "Paint"%>
+                  <p class="card-text text-center">
+                    <div class="box3">
+                      <span class="box-title">作品内容</span>
+                      <%= s.description %>
+                    </div>
+                  </p>
+                <% end %>
                 
                 <div class="box11">
                 <span class="box-title">タグ</span>

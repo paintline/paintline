@@ -31,22 +31,22 @@
              width: 100%;
              
              .U_paint{
-                 height: 170px;
-                 width: 80%;
-                 margin-top: 20px;
-                 margin-left: auto;
-                 margin-right: auto;
+                height: 170px;
+                max-width: 550px;
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
              }
              .alllink{
                  clear: both;
              }
 
              .U_senga{
-                 height: 170px;
-                 width: 80%;
-                 margin-top: 20px;
-                 margin-left: auto;
-                 margin-right: auto;
+                height: 170px;
+                max-width: 550px;
+                margin-top: 20px;
+                margin-left: auto;
+                margin-right: auto;
              }
              .alllink{
                      clear: both;
@@ -85,6 +85,13 @@
 }
 
 .mail_wrap{
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+
+.image_file{
     max-width: 300px;
     margin-left: auto;
     margin-right: auto;

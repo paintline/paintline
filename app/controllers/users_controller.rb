@@ -74,8 +74,18 @@ class UsersController < ApplicationController
     current_user.update(user_params)
     redirect_to profile_path(current_user)
   end
+
+#ヘルプ関連---------------------------------------
+
+  def user_help
+    
+  end
+
+
   
 #--------------------------------------------------------------
+
+
   
   private
   

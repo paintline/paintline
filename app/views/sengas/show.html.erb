@@ -46,39 +46,41 @@
             <% end %>
           </div>
           
+          
         </p>
         
         <% if @senga.user_id == current_user.id %>
           <p>
             申請者一覧
           </p>
-          <ul class="Applicant">
             <% @senga.senga_requests.where(permission: nil).or(@senga.senga_requests.where(permission: true)).each do |r| %>
-              <li>
+              <div>
                 <!--申請者一覧-->
                 <%=link_to r.user.name, profile_path(r.user) %>
                 
                 <% if r.permission != true %>
-                  <%= link_to '許可' , senga_request_commit_path(r.id) , class: "btn btn-large"%>
+                  <p><%= link_to '許可' , senga_request_commit_path(r.id) , class: "btn btn-large"%>
                 <% elsif r.permission == true %>
-                  <%= link_to '×' , senga_request_commit_path(r.id) %>
+                  <p>許可対応済み</p>
                 <% end %>
                 <% if r.permission != true %>
-                  <%= link_to '不許可' , senga_request_deny_path(r.id) , class: "btn btn-large"%>
+                  <%= link_to '不許可' , senga_request_deny_path(r.id) , class: "btn btn-large"%></p>
                 <% end %>
                 
-              </li>
+              </div>
             <% end %>
-          </ul>
         <% end %>
         
-        <% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission == true %>
-          <%= link_to '線画をダウンロード' ,@senga.image.url %>
-        <% end %>
+        <div class ="download">
+          <% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission == true %>
+            <p><%= link_to '線画をダウンロード' ,@senga.image.url %></p>
+          <% end %>
+          
+          <% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission == true %>
+            <p><%= link_to '投稿する' ,paints_path(senga_id: @senga.id) %></p>
+          <% end%>
+        </div>
         
-        <% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission == true %>
-          <%= link_to '投稿する' ,paints_path(senga_id: @senga.id) %>
-        <% end%>
       </div>
      
     </div>

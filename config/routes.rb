@@ -60,4 +60,9 @@ Rails.application.routes.draw do
   
   #不許可
   get '/senga_request/deny/:request_id' => 'sengas#senga_request_deny', as: :senga_request_deny
+  
+#ヘルプ-----------------------------------------------
+
+  get '/help' => 'users#user_help', as: :user_help
+
 end
