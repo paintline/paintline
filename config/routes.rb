@@ -53,6 +53,10 @@ Rails.application.routes.draw do
 
 #申請-----------------------------------------------
 
+  #申請一覧
+  get '/sinsei_list/(:id)' => 'home#sinsei_list', as: :sinsei_list
+
+  #申請する
   get '/senga_request/:senga_id' => 'sengas#senga_request', as: :senga_request
   
   #許可

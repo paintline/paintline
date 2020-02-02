@@ -10,7 +10,7 @@ class HomeController < ApplicationController
     render template: 'common/list'
   end
   
-  #線画一覧
+  #一覧
   def senga_list
     
     #自分の投稿リスト
