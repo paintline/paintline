@@ -27,7 +27,8 @@ class HomeController < ApplicationController
     
     #申請リスト
     elsif params[:type] && params[:type] == 'requests'
-      @pictures = Senga.joins(:senga_requests).where(senga_requests:{user_id: current_user.id}).where.not(senga_requests:{permission: false}).order(created_at: :desc).page(params[:page]).per(6)
+      #@pictures = Senga.joins(:senga_requests).where(senga_requests:{user_id: current_user.id}).where.not(senga_requests:{permission: false}).where.not(senga_requests:{permission: true}).order(created_at: :desc).page(params[:page]).per(6)
+      @pictures = Senga.joins(:senga_requests).where(senga_requests:{user_id: current_user.id,permission: nil}).order(created_at: :desc).page(params[:page]).per(6)
     
     #許可済み知スト
     elsif params[:type] && params[:type] == 'permitted'
