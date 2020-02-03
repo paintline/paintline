@@ -4,6 +4,8 @@ class SengasController < ApplicationController
 
     end
     
+#投稿関連---------------------------------------
+
     # 投稿処理
     def create
         
@@ -50,12 +52,22 @@ class SengasController < ApplicationController
         end
     end
 
-
+    #詳細
     def show
         #sengaテーブルからIDを取得
         @senga = Senga.find(params[:id])
     end
+
+    #投稿削除
+    def destroy
+        @pictures = Senga.find(params[:id])
+        @pictures.destroy
+        flash[:succsess] = "投稿を削除しました"
+        redirect_to senga_path
+    end
     
+#お気に入り関連---------------------------------------
+
     def senga_like
         # find_by 特定の値を検索、user_idがcurrent_user.idでありsenga_idがparams[:id]である時に実行
         if SengaLike.find_by(:user_id => current_user.id , :senga_id => params[:id] )
@@ -82,15 +94,8 @@ class SengasController < ApplicationController
         end
     end
     
-    #削除
-    def destroy
-        @pictures = Senga.find(params[:id])
-        @pictures.destroy
-        flash[:succsess] = "投稿を削除しました"
-        redirect_to senga_path
-    end
-    
-    
+#申請関連---------------------------------------
+
     #申請
     def senga_request
         senga_request = SengaRequest.find_by(:user_id => current_user.id, :senga_id => params[:senga_id])

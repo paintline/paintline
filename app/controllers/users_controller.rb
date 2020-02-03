@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+#サインイン関連---------------------------------------
+
   def sign_up
   end
   
@@ -80,8 +82,6 @@ class UsersController < ApplicationController
   def user_help
     
   end
-
-
   
 #--------------------------------------------------------------
 

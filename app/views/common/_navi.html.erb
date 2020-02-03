@@ -5,63 +5,104 @@
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mx-auto">
       
         <!--マイページ-->
-        <li class="nav-item">
-          <%= link_to profile_path(current_user) do %>
+        <div class="dropdown">
+          <button type="button" id="dropdown1"
+              class="btn btn-secondary dropdown-toggle btn-light "
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
             <%= image_tag('mypage.gif',:class => "nav_menu")%>
-          <% end %>
-        </li>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown1">
+            <%= link_to profile_path(current_user) do %>
+              <p class="dropdown-item"><%= image_tag('mypage.gif',:class => "nav_menu")%></p>
+            <% end %>
+            <%= link_to senga_list_path(type: 'senga_like') do %>
+              <p class="dropdown-item">お気に入り線画一覧</p>
+            <% end %>
+            <%= link_to senga_list_path(type: 'paint_like') do %>
+              <p class="dropdown-item">お気に入り完成品一覧</p>
+            <% end %>
+          </div>
+        </div>
         
         <!--線画投稿-->
-        <li class="nav-item">
+        <div class="dropdown">
           <%= link_to sengas_path do %>
-            <%= image_tag('senga_toukou.gif',:class => "nav_menu")%>
+          <button type="button" 
+              class="btn btn-secondary btn-light "
+              aria-haspopup="true"
+              aria-expanded="false">
+              <%= image_tag('senga_toukou.gif',:class => "nav_menu")%>
+          </button>
           <% end %>
-        </li>
+        </div>
         
-        <!--全体の線画リスト-->
-        <li class="nav-item">
-          <%= link_to senga_list_path do %>
+        <!--一覧関連-->
+        <div class="dropdown">
+          <button type="button" id="dropdown2"
+              class="btn btn-secondary dropdown-toggle btn-light "
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
             <%= image_tag('senga_list.gif',:class => "nav_menu")%>
-          <% end %>
-        </li>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown2">
+            <%= link_to senga_list_path do %>
+              <p class="dropdown-item"><%= image_tag('senga_list.gif',:class => "nav_menu")%></p>
+            <% end %>
+            <%= link_to root_path do %>
+              <p class="dropdown-item"><%= image_tag('kannsei_list.gif',:class => "nav_menu")%></p>
+            <% end %>
+          </div>
+        </div>
         
-        <!--完成品一覧-->
-        <li class="nav-item">
-          <%= link_to root_path do %>
-            <%= image_tag('kannsei_list.gif',:class => "nav_menu")%>
-          <% end %>
-        </li>
-        
-        <!--申請一覧-->
-        <li class="nav-item">
-          <%= link_to senga_list_path(type: 'requests') do %>
+        <!--申請関連-->
+        <div class="dropdown">
+          <button type="button" id="dropdown3"
+              class="btn btn-secondary dropdown-toggle btn-light "
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false">
             <%= image_tag('sinnsei_list.gif',:class => "nav_menu")%>
-          <% end %>
-        </li>
-        
-        <!--申請許可-->
-        <li class="nav-item">
-          <%= link_to senga_list_path(type: 'permitted') do %>
-            <%= image_tag('sinnseikyoka_list.gif',:class => "nav_menu")%>
-          <% end %>
-        </li>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdown3">
+            <%= link_to senga_list_path(type: 'requests') do %>
+              <p class="dropdown-item"><%= image_tag('sinnsei_list.gif',:class => "nav_menu")%></p>
+            <% end %>
+            <%= link_to senga_list_path(type: 'permitted') do %>
+              <p class="dropdown-item"><%= image_tag('sinnseikyoka_list.gif',:class => "nav_menu")%></p>
+            <% end %>
+          </div>
+        </div>
         
         <!--ヘルプ-->
-        <li class="nav-item">
+        <div class="dropdown">
           <%= link_to user_help_path do %>
-            <%= image_tag('help.gif',:class => "nav_menu")%>
+          <button type="button" 
+              class="btn btn-secondary btn-light "
+              aria-haspopup="true"
+              aria-expanded="false">
+               <%= image_tag('help.gif',:class => "nav_menu")%>
+          </button>
           <% end %>
-        </li>
+        </div>
         
         <!--サインアウト-->
-        <li class="nav-item">
+        <div class="dropdown">
           <%= link_to sign_out_path do %>
-            <%= image_tag('signout.gif',:class => "nav_menu")%>
+          <button type="button" 
+              class="btn btn-secondary btn-light "
+              aria-haspopup="true"
+              aria-expanded="false">
+              <%= image_tag('signout.gif',:class => "nav_menu")%>
+          </button>
           <% end %>
-        </li>
+        </div>
+        
         <li>
           <div class="nill"></divSSS>
         </li>

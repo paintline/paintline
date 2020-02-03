@@ -10,110 +10,117 @@
     
     <div class="container">
       <div class="row">
+        <% if @pictures.any? %>
         
-        <% @pictures.each do |s| %>
-          <div class="col-md-4">
-            <div class="card mb-4 box-shadow">
-              
-              <!-- class名がSengaの場合【タイトル】 -->
-              <% if s.class.name == "Senga" %>
-                <h4 class="card-title text-center">
-                  <%= s.tittle %>
-                </h4>
+          <% @pictures.each do |s| %>
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
                 
-              <!-- class名がPaintの場合【タイトル】 -->
-              <% elsif s.class.name == "Paint" %>
-                <h4 class="card-title text-center">
-                  <%= s.senga.tittle %>
-                </h4>
-              <% end %>
-              
-              <!-- class名がSengaの場合【画像】 -->
-              <% if s.class.name == "Senga" %>
-                <%= link_to senga_path(s) do %>
-                  <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
-                <% end %>
-                
-              <!-- class名がPaintの場合【画像】 -->
-              <% elsif s.class.name == "Paint"%>
-                <%= link_to paint_path(s) do %>
-                  <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
-                <% end %>
-              <% end %>
-              
-              <div class="card-body">
-                
-                <!-- class名がSengaの場合【線画投稿者の名前】 -->
-                <% if s.class.name == "Senga"%>
-                  <!-- 線画投稿者の情報 -->
-                  <div class="text-center">
-                    <div style="background: url('<%= image_url(s.user) %>'); background-position: center; background-size: cover" class="image">
-                    </div>
-                    <p>線画投稿者<%= link_to s.user.name, profile_path(s.user) %></p>
-                    <% if s.user_id == current_user.id %>
-                      <%= link_to senga_delete_path(s), method: :delete do %>
-                        <p>削除する</p>
-                      <% end %>
-                    <% end %>
-                  </div>
-                <% else %>
+                <!-- class名がSengaの場合【タイトル】 -->
+                <% if s.class.name == "Senga" %>
+                  <h4 class="card-title text-center">
+                    <%= s.tittle %>
+                  </h4>
+                  
+                <!-- class名がPaintの場合【タイトル】 -->
+                <% elsif s.class.name == "Paint" %>
+                  <h4 class="card-title text-center">
+                    <%= s.senga.tittle %>
+                  </h4>
                 <% end %>
                 
                 <!-- class名がSengaの場合【画像】 -->
                 <% if s.class.name == "Senga" %>
-                  <p class="card-text text-center">
-                    <div class="box3">
-                      <span class="box-title">依頼内容</span>
-                      <%= s.description %>
-                    </div>
-                  </p>
-
+                  <%= link_to senga_path(s) do %>
+                    <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
+                  <% end %>
+                  
                 <!-- class名がPaintの場合【画像】 -->
                 <% elsif s.class.name == "Paint"%>
-                  <p class="card-text text-center">
-                    <div class="box3">
-                      <span class="box-title">作品内容</span>
-                      <%= s.description %>
-                    </div>
-                  </p>
+                  <%= link_to paint_path(s) do %>
+                    <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
+                  <% end %>
                 <% end %>
                 
-                <div class="box11">
-                <span class="box-title">タグ</span>
-                
+                <div class="card-body">
+                  
+                  <!-- class名がSengaの場合【線画投稿者の名前】 -->
+                  <% if s.class.name == "Senga"%>
+                    <!-- 線画投稿者の情報 -->
+                    <div class="text-center">
+                      <div style="background: url('<%= image_url(s.user) %>'); background-position: center; background-size: cover" class="user_image">
+                      </div>
+                      <p>線画投稿者<%= link_to s.user.name, profile_path(s.user) %></p>
+                    </div>
+                      <% if s.user_id == current_user.id %>
+                        <%= link_to senga_delete_path(s), method: :delete do %>
+                          <p>削除する</p>
+                        <% end %>
+                      <% end %>
+                  <% else %>
+                  <% end %>
+                  
+                  <!-- class名がSengaの場合【画像】 -->
+                  <% if s.class.name == "Senga" %>
+                    <p class="card-text text-center">
+                      <div class="box3">
+                        <span class="box-title">依頼内容</span>
+                        <%= s.description %>
+                      </div>
+                    </p>
+  
+                  <!-- class名がPaintの場合【画像】 -->
+                  <% elsif s.class.name == "Paint"%>
+                    <p class="card-text text-center">
+                      <div class="box3">
+                        <span class="box-title">作品内容</span>
+                        <%= s.description %>
+                      </div>
+                    </p>
+                  <% end %>
+                  
+                  <div class="box11">
+                  <span class="box-title">タグ</span>
+                  
+                    <!-- class名がSengaの場合 -->
+                    <% if s.class.name == "Senga" %>
+                      <% s.senga_categories.each do |sc| %>
+                        <%=link_to sc.category.name, senga_list_path(category: sc.category.id,type: 'category') %>
+                      <% end %>
+                    <!-- class名がPaintの場合 -->
+                    <% elsif s.class.name == "Paint"%>
+                      <% s.senga.senga_categories.each do |sc| %>
+                        <%=link_to sc.category.name, paint_list_path(category: sc.category.id,type: 'category') %>
+                      <% end %>
+                    <%end%>
+                  </div>
+                  
                   <!-- class名がSengaの場合 -->
                   <% if s.class.name == "Senga" %>
-                    <% s.senga_categories.each do |sc| %>
-                      <%=link_to sc.category.name, senga_list_path(category: sc.category.id,type: 'category') %>
-                    <% end %>
+                    <p class="card-text text-center">
+                      <p class="favorite text-center">
+                      お気に入り<%= s.senga_likes.length %>件
+                      </p>
+                    </p>
+                  <% end %>
+                  
                   <!-- class名がPaintの場合 -->
-                  <% elsif s.class.name == "Paint"%>
-                    <% s.senga.senga_categories.each do |sc| %>
-                      <%=link_to sc.category.name, paint_list_path(category: sc.category.id,type: 'category') %>
-                    <% end %>
-                  <%end%>
+                  <% if s.class.name == "Paint" %>
+                    <p class="card-text text-center">
+                      <p class="favorite text-center">
+                      お気に入り<%= s.paint_likes.length %>件
+                      </p>
+                    </p>
+                  <% end %>
+                  
                 </div>
-                
-                <!-- class名がSengaの場合 -->
-                <% if s.class.name == "Senga" %>
-                  <p class="card-text text-center">
-                    <p class="favorite text-center">
-                    お気に入り<%= s.senga_likes.length %>件
-                    </p>
-                  </p>
-                <% end %>
-                
-                <!-- class名がPaintの場合 -->
-                <% if s.class.name == "Paint" %>
-                  <p class="card-text text-center">
-                    <p class="favorite text-center">
-                    お気に入り<%= s.paint_likes.length %>件
-                    </p>
-                  </p>
-                <% end %>
-                
               </div>
             </div>
+          <% end %>
+        
+        <% else %>
+          <div class="nill_box">
+            <p class="text-center">空です。</p>
           </div>
         <% end %>
         

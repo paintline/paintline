@@ -69,6 +69,8 @@ class HomeController < ApplicationController
     
   end
   
+#.psdファイル作成関連---------------------------------------
+
   #pngファイルの生成
   def create_png
     senga = Senga.find(params[:id])
