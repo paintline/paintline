@@ -14,17 +14,17 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false">
-            <%= image_tag('mypage.gif',:class => "nav_menu")%>
+            <%= image_tag('home.gif',:class => "nav_menu")%>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdown1">
             <%= link_to profile_path(current_user) do %>
               <p class="dropdown-item"><%= image_tag('mypage.gif',:class => "nav_menu")%></p>
             <% end %>
             <%= link_to senga_list_path(type: 'senga_like') do %>
-              <p class="dropdown-item">お気に入り線画一覧</p>
+              <p class="dropdown-item"><%= image_tag('like_senga.gif',:class => "nav_menu")%></p>
             <% end %>
             <%= link_to senga_list_path(type: 'paint_like') do %>
-              <p class="dropdown-item">お気に入り完成品一覧</p>
+              <p class="dropdown-item"><%= image_tag('like_paint.gif',:class => "nav_menu")%></p>
             <% end %>
           </div>
         </div>
@@ -48,14 +48,14 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false">
-            <%= image_tag('senga_list.gif',:class => "nav_menu")%>
+            <%= image_tag('all.gif',:class => "nav_menu")%>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdown2">
             <%= link_to senga_list_path do %>
               <p class="dropdown-item"><%= image_tag('senga_list.gif',:class => "nav_menu")%></p>
             <% end %>
             <%= link_to root_path do %>
-              <p class="dropdown-item"><%= image_tag('kannsei_list.gif',:class => "nav_menu")%></p>
+              <p class="dropdown-item"><%= image_tag('kansei_list.gif',:class => "nav_menu")%></p>
             <% end %>
           </div>
         </div>
@@ -67,14 +67,14 @@
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false">
-            <%= image_tag('sinnsei_list.gif',:class => "nav_menu")%>
+            <%= image_tag('sinnsei.gif',:class => "nav_menu")%>
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdown3">
             <%= link_to senga_list_path(type: 'requests') do %>
-              <p class="dropdown-item"><%= image_tag('sinnsei_list.gif',:class => "nav_menu")%></p>
+              <p class="dropdown-item"><%= image_tag('sinsei_list.gif',:class => "nav_menu")%></p>
             <% end %>
             <%= link_to senga_list_path(type: 'permitted') do %>
-              <p class="dropdown-item"><%= image_tag('sinnseikyoka_list.gif',:class => "nav_menu")%></p>
+              <p class="dropdown-item"><%= image_tag('sinsei_kyoka.gif',:class => "nav_menu")%></p>
             <% end %>
           </div>
         </div>
@@ -98,7 +98,7 @@
               class="btn btn-secondary btn-light "
               aria-haspopup="true"
               aria-expanded="false">
-              <%= image_tag('signout.gif',:class => "nav_menu")%>
+              <%= image_tag('sign_out.gif',:class => "nav_menu")%>
           </button>
           <% end %>
         </div>
