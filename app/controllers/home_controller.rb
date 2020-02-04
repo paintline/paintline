@@ -5,9 +5,21 @@ class HomeController < ApplicationController
   
   #完成品一覧
   def paint_list
-    @pictures = Paint.all.order(created_at: :desc).page(params[:page]).per(6)
-
-    render template: 'common/list'
+    if params[:user_id]
+      @pictures = Paint.where(:user_id => params[:user_id]).order(created_at: :desc).page(params[:page]).per(6)
+    
+    else
+      @pictures = Paint.all.order(created_at: :desc).page(params[:page]).per(6)
+      render template: 'common/list'
+    end
+    
+    if params[:word].present?
+     @pictures = Senga.where("caption like ?", "%#{params[:word]}%").order("id desc")
+     render template: 'common/list'
+    else
+      render template: 'common/list'
+    end
+    
   end
   
   #一覧
@@ -16,10 +28,6 @@ class HomeController < ApplicationController
     #自分の投稿リスト
     if params[:user_id]
       @pictures = Senga.where(:user_id => params[:user_id]).order(created_at: :desc).page(params[:page]).per(6)
-    
-    #自分の完成品リスト
-    elsif params[:type] && params[:type] == 'user_paint'
-      @pictures = Paint.where(:user_id => params[:user_id]).order(created_at: :desc).page(params[:page]).per(6)
 
     #線画お気に入りリスト
     elsif params[:type] && params[:type] == 'senga_like'

@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   
   resources :paints
   
-  get 'paint/list' => 'home#paint_list', as: :paint_list
+  get 'paint/list/(:id)' => 'home#paint_list', as: :paint_list
   
   get 'create/:id/png' => 'home#create_png', as: :create_png
   
