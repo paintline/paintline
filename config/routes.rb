@@ -68,6 +68,59 @@ Rails.application.routes.draw do
   
 #ヘルプ-----------------------------------------------
 
-  get '/help' => 'users#user_help', as: :user_help
+  #メインヘルプ画面
+  get '/help' => 'help#user_help', as: :user_help
+  
+  #メインヘルプ1
+  get '/main_help1' => 'help#main_help1', as: :main_help1
+
+  #メインヘルプ2
+  get '/main_help2' => 'help#main_help2', as: :main_help2
+
+  #メインヘルプ3
+  get '/main_help3' => 'help#main_help3', as: :main_help3
+
+  #メインヘルプ4
+  get '/main_help4' => 'help#main_help4', as: :main_help4
+
+  #naviヘルプ--------------------------------------------
+  
+  #ナビヘルプ1
+  get '/navi_help1' => 'help#navi_help1', as: :navi_help1
+
+  #ナビヘルプ2
+  get '/navi_help2' => 'help#navi_help2', as: :navi_help2
+
+  #ナビヘルプ3
+  get '/navi_help3' => 'help#navi_help3', as: :navi_help3
+
+  #ナビヘルプ4
+  get '/navi_help4' => 'help#navi_help4', as: :navi_help4
+
+  #ナビヘルプ5
+  get '/navi_help5' => 'help#navi_help5', as: :navi_help5
+
+  #ナビヘルプ6
+  get '/navi_help6' => 'help#navi_help6', as: :navi_help6
+
+  #ポストヘルプ--------------------------------------------
+
+  #ポストヘルプ1
+  get '/post_help1' => 'help#post_help1', as: :post_help1
+
+  #ポストヘルプ2
+  get '/post_help2' => 'help#post_help2', as: :post_help2
+
+  #ポストヘルプ3
+  get '/post_help3' => 'help#post_help3', as: :post_help3
+
+  #ポストヘルプ4
+  get '/post_help4' => 'help#post_help4', as: :post_help4
+
+  #ポストヘルプ5
+  get '/post_help5' => 'help#post_help5', as: :post_help5
+
+  #ポストヘルプ6
+  get '/post_help6' => 'help#post_help6', as: :post_help6
 
 end

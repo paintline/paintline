@@ -20,7 +20,11 @@ class HomeController < ApplicationController
     #自分の完成品リスト
     elsif params[:type] && params[:type] == 'user_paint'
       @pictures = Paint.where(:user_id => params[:user_id]).order(created_at: :desc).page(params[:page]).per(6)
-      
+
+    #線画お気に入りリスト
+    elsif params[:type] && params[:type] == 'senga_like'
+      @pictures = Senga.joins(:senga_likes).where(senga_likes:{user_id: current_user.id}).order(created_at: :desc).page(params[:page]).per(6)
+
     #完成品お気に入りリスト
     elsif params[:type] && params[:type] == 'paint_like'
       @pictures = Paint.joins(:paint_likes).where(paint_likes:{user_id: current_user.id}).order(created_at: :desc).page(params[:page]).per(6)
