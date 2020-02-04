@@ -3,8 +3,8 @@ class SengasController < ApplicationController
     def index
 
     end
-    
-#投稿関連---------------------------------------
+
+#線画投稿関連---------------------------------------
 
     # 投稿処理
     def create
@@ -14,13 +14,27 @@ class SengasController < ApplicationController
          
         if senga_params[:image]
             
+            #バリデーション処理----------------------------------------------------
+            
             # PSDファイルじゃなかった場合
             if senga_params[:image].original_filename.split('.')[1] != 'psd'
                 flash[:danger] = "psdデータを投稿してください。"
                 redirect_to sengas_path and return
             end
-         
-            # 線画のデータをテーブルに保存する
+            
+            # タイトルが空だった場合
+            if senga_params[:tittle].empty?
+                flash[:danger] = "タイトルを入力してください。"
+                redirect_to sengas_path and return
+            end
+            
+            # 説明文が空だった場合
+            if senga_params[:description].empty?
+                flash[:danger] = "説明文を入力してください。"
+                redirect_to sengas_path and return
+            end
+                
+            # 線画のデータをテーブルに保存する-------------------------------------
             if senga.save!
                 
                 # カテゴリーを登録
@@ -52,22 +66,15 @@ class SengasController < ApplicationController
         end
     end
 
-    #詳細
+    #線画詳細
     def show
         #sengaテーブルからIDを取得
         @senga = Senga.find(params[:id])
     end
 
-    #投稿削除
-    def destroy
-        @pictures = Senga.find(params[:id])
-        @pictures.destroy
-        flash[:succsess] = "投稿を削除しました"
-        redirect_to senga_path
-    end
-    
-#お気に入り関連---------------------------------------
+#線画お気に入り関連---------------------------------------
 
+    
     def senga_like
         # find_by 特定の値を検索、user_idがcurrent_user.idでありsenga_idがparams[:id]である時に実行
         if SengaLike.find_by(:user_id => current_user.id , :senga_id => params[:id] )
@@ -94,7 +101,15 @@ class SengasController < ApplicationController
         end
     end
     
-#申請関連---------------------------------------
+    #削除
+    def destroy
+        @pictures = Senga.find(params[:id])
+        @pictures.destroy
+        flash[:succsess] = "投稿を削除しました"
+        redirect_to senga_path
+    end
+    
+#線画申請関連---------------------------------------
 
     #申請
     def senga_request

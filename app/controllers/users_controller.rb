@@ -57,12 +57,12 @@ class UsersController < ApplicationController
     #データ取得
     @user = User.find(params[:id])
     
-    #最新の線画表示
+    #最新4件の線画表示
     @senga = Senga.where(user_id: @user.id ).limit(4)
     #全ての線画表示
     @senga_all = Senga.where(user_id: @user.id )
     
-    #最新の完成品表示
+    #最新4件の完成品表示
     @paint = Paint.where(user_id: @user.id ).limit(4)
     #全ての完成品表示
     @paint_all = Paint.where(user_id: @user.id )

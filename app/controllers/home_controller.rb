@@ -17,9 +17,9 @@ class HomeController < ApplicationController
     if params[:user_id]
       @pictures = Senga.where(:user_id => params[:user_id]).order(created_at: :desc).page(params[:page]).per(6)
     
-    #線画のお気に入りリスト
-    elsif params[:type] && params[:type] == 'senga_like'
-      @pictures = Senga.joins(:senga_likes).where(senga_likes:{user_id: current_user.id}).order(created_at: :desc).page(params[:page]).per(6)
+    #自分の完成品リスト
+    elsif params[:type] && params[:type] == 'user_paint'
+      @pictures = Paint.where(:user_id => params[:user_id]).order(created_at: :desc).page(params[:page]).per(6)
       
     #完成品お気に入りリスト
     elsif params[:type] && params[:type] == 'paint_like'
@@ -69,8 +69,6 @@ class HomeController < ApplicationController
     
   end
   
-#.psdファイル作成関連---------------------------------------
-
   #pngファイルの生成
   def create_png
     senga = Senga.find(params[:id])
