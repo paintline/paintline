@@ -16,8 +16,6 @@ class HomeController < ApplicationController
     if params[:word].present?
      @pictures = Senga.where("caption like ?", "%#{params[:word]}%").order("id desc")
      render template: 'common/list'
-    else
-      render template: 'common/list'
     end
     
   end
