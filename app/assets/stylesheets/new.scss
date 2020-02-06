@@ -61,7 +61,7 @@
   clear: both;
   text-align: center;
   padding-top: 30px;
-  padding-bottom: 60px;
+  padding-bottom: 30px;
   
   .submit_class_name_here {
     margin-top: -50px;
@@ -82,6 +82,14 @@
     color         : #000066;     /* 背景色     */
     background    : #ffffff;     /* 文字色     */
   }
+}
+
+//投稿ヘルプリンク
+.toukou_help{
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 30px;
+  padding-left: 50%;
 }
   
   // ファイル選択ボタン

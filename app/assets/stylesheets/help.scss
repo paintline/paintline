@@ -3,9 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .help_content{
-    max-width: 300px;
+    max-width: 350px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 30px;
-    height: 1000px;
+    height: 1100px;
+}
+
+.help_logo{
+    max-width: 200px;
+    height: auto;
+    text-align: center;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 40px;
 }

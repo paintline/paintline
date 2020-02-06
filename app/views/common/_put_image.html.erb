@@ -45,7 +45,7 @@
     <!-- モデル名がsengaの場合表示【タイトル】 -->
     <% if model_name == 'sengas' %>
       <div class="tittle_wrap">
-        <%= s.text_field :tittle,placeholder: "タイトルを入力(100文字以内)", :class => 'form-control' %>
+        <%= s.text_field :tittle,placeholder: "タイトルを入力(10文字以内)", :class => 'form-control' %>
       </div>
     <% end %>
     
@@ -64,6 +64,13 @@
     <% if model_name != 'paints' || model_name == 'paints' && current_user.senga_requests.find_by(:senga_id => params[:senga_id]) && current_user.senga_requests.find_by(:senga_id => params[:senga_id]).permission == true %>
       <div class="bottun">
         <%= s.submit '投稿する', :class => 'submit_class_name_here' %>
+      </div>
+    <% end %>
+    
+    <!-- モデル名がsengaの場合表示【ヘルプ】 -->
+    <% if model_name == 'sengas' %>
+      <div class="toukou_help">
+        <%= link_to '線画投稿とは? ⇒',user_help_path %>
       </div>
     <% end %>
 

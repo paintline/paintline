@@ -1,6 +1,6 @@
 <%= render partial: 'common/navi' %>
-<main role="main">
-  <div class="album py-5 bg-light">
+<main role="main" class="list_mian" >
+  <div class="album py-5 ">
     
     <!--ユーザーリスト-->
     <!--div class="rank_box">
@@ -105,19 +105,15 @@
                   
                   <!-- class名がSengaの場合 -->
                   <% if s.class.name == "Senga" %>
-                    <p class="card-text text-center">
-                      <p class="favorite text-center">
+                    <p class="favorite text-center">
                       お気に入り<%= s.senga_likes.length %>件
-                      </p>
                     </p>
                   <% end %>
                   
                   <!-- class名がPaintの場合 -->
                   <% if s.class.name == "Paint" %>
                     <p class="card-text text-center">
-                      <p class="favorite text-center">
                       お気に入り<%= s.paint_likes.length %>件
-                      </p>
                     </p>
                   <% end %>
                   
