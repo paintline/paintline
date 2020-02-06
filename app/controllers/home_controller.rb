@@ -10,12 +10,13 @@ class HomeController < ApplicationController
     
     else
       @pictures = Paint.all.order(created_at: :desc).page(params[:page]).per(6)
-      render template: 'common/list'
     end
     
     if params[:word].present?
-     @pictures = Senga.where("caption like ?", "%#{params[:word]}%").order("id desc")
-     render template: 'common/list'
+      @pictures = Senga.where("caption like ?", "%#{params[:word]}%").order("id desc")
+      render template: 'common/list'
+    else
+      render template: 'common/list'
     end
     
   end

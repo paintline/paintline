@@ -19,19 +19,42 @@
               <span class="box-title">内容</span>
               <%= @paint.description %>
           </div>
+          <div class="name">
+            <div class="name_senga">
+              <%= image_tag('sengatoukousha.gif',:class => "name_image")%>
+              <%= link_to @paint.senga.user.name, profile_path(@paint.senga.user),:class => "name" %>
+            </div>
+            <div class="name_paints">
+              <%= image_tag('iraisuikousha.gif',:class => "name_image")%>
+              <%= link_to @paint.user.name, profile_path(@paint.user),:class => "name" %>
+            </div>
+          </div>
           <div class="info">
-            <p>線画担当<%= link_to @paint.senga.user.name, profile_path(@paint.senga.user)%></p>
-            <p>着色担当<%= link_to @paint.user.name, profile_path(@paint.user)%></p>
-            <br>
-            
             <% if @paint.user_id != current_user.id %>
               <% if PaintLike.find_by(:user_id => current_user.id , :paint_id => @paint.id )  %>
-              　<%= link_to 'お気に入りにから削除' ,paint_like_path(params[:id]), class: "show_btn-square" %>
+              　<div class="edit pt-3">
+                  <button type="button" 
+                    class="btn btn-secondary btn-light "
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                    <%= link_to paint_like_path(params[:id]) do %>
+                      <%= image_tag('no_favorite.gif',:class => "nav_menu")%>
+                    <% end %>
+                  </button>
+                </div>
               <% else %>
-              　<%= link_to 'お気に入りに追加' ,paint_like_path(params[:id]) , class: "show_btn-square" %>
+              　<div class="edit pt-3">
+                  <button type="button" 
+                    class="btn btn-secondary btn-light "
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                    <%= link_to paint_like_path(params[:id]) do %>
+                      <%= image_tag('favorite.gif',:class => "nav_menu")%>
+                    <% end %>
+                  </button>
+                </div>
               <% end %>
             <% end %>
-          
           </div>
         </p>
       </div>

@@ -12,9 +12,9 @@ class SengasController < ApplicationController
         # 線画のデータを登録する(.new)
         senga = Senga.new(senga_params)
          
+#バリデーション処理----------------------------------------------------
+
         if senga_params[:image]
-            
-            #バリデーション処理----------------------------------------------------
             
             # PSDファイルじゃなかった場合
             if senga_params[:image].original_filename.split('.')[1] != 'psd'
@@ -33,6 +33,13 @@ class SengasController < ApplicationController
                 flash[:danger] = "説明文を入力してください。"
                 redirect_to sengas_path and return
             end
+            
+            # タイトルの文字数チェック
+            if senga_params[:tittle].length > 10
+                flash[:danger] = "タイトルは10文字以内で入力してください。"
+                redirect_to sengas_path and return
+            end
+            
                 
             # 線画のデータをテーブルに保存する-------------------------------------
             if senga.save!

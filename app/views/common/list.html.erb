@@ -34,7 +34,6 @@
                   <%= link_to senga_path(s) do %>
                     <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
                   <% end %>
-                  
                 <!-- class名がPaintの場合【画像】 -->
                 <% elsif s.class.name == "Paint"%>
                   <%= link_to paint_path(s) do %>
@@ -50,33 +49,42 @@
                     <div class="text-center">
                       <div style="background: url('<%= image_url(s.user) %>'); background-position: center; background-size: cover" class="image">
                       </div>
-                      <p>線画投稿者<%= link_to s.user.name, profile_path(s.user) %></p>
+                      <div class="name">
+                        <div class="name_senga">
+                          <%= image_tag('sengatoukousha.gif',:class => "name_image")%>
+                          <%= link_to s.user.name, profile_path(s.user),:class => "name"%>
+                        </div>
+                      </div>
                       <% if s.user_id == current_user.id %>
-                        <%= link_to senga_delete_path(s), method: :delete do %>
-                          <p>削除する</p>
-                        <% end %>
+                      
+                        <div class="edit pt-3">
+                          <button type="button" 
+                            class="btn btn-secondary btn-light "
+                            aria-haspopup="true"
+                            aria-expanded="false">
+                            <%= link_to senga_delete_path(s), method: :delete do %>
+                              <%= image_tag('sakujo.gif',:class => "nav_menu")%>
+                            <% end %>
+                          </button>
+                        </div>
+
                       <% end %>
                     </div>
                   <% else %>
                   <% end %>
                   
-                  <!-- class名がSengaの場合【画像】 -->
+                  <!-- class名がSengaの場合【内容】 -->
                   <% if s.class.name == "Senga" %>
-                    <p class="card-text text-center">
                       <div class="box3">
                         <span class="box-title">依頼内容</span>
                         <%= s.description %>
                       </div>
-                    </p>
-  
-                  <!-- class名がPaintの場合【画像】 -->
+                  <!-- class名がPaintの場合【内容】 -->
                   <% elsif s.class.name == "Paint"%>
-                    <p class="card-text text-center">
                       <div class="box3">
                         <span class="box-title">作品内容</span>
                         <%= s.description %>
                       </div>
-                    </p>
                   <% end %>
                   
                   <div class="box11">

@@ -1,5 +1,4 @@
 class Senga < ApplicationRecord
-  paginates_per 3
   belongs_to :user
   has_many :senga_likes, dependent: :destroy
   has_many :senga_categories, dependent: :destroy
@@ -10,4 +9,5 @@ class Senga < ApplicationRecord
   validates :tittle, presence: true
   validates :image, presence: true
   validates :description, presence: true
+
 end

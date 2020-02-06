@@ -9,9 +9,9 @@
       <!-- 投稿画像 -->
       <div class="image">
         <% if current_user.image.present? %>
-          <%= image_tag current_user.image, id: :img_prev , :size =>'320x320' , class: "image_p"%>
+          <%= image_tag current_user.image, id: :img_prev , :size =>'220x220' , class: "image_p"%>
         <% else %>
-          <%= image_tag "https://dummyimage.com/200x200/000/fff", id: :img_prev , :size =>'320x320' , class: "image_p"%>
+          <%= image_tag "https://dummyimage.com/200x200/000/fff", id: :img_prev , :size =>'220x220' , class: "image_p"%>
         <% end %>
       </div>
   

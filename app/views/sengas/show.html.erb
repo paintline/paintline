@@ -15,39 +15,74 @@
       <div class="senga_info">
         
         <p class="card-text text-center">
+          
+          <!-- 依頼内容 -->
           <div class="box9">
               <span class="box-title">依頼内容</span>
               <%= @senga.description %>
           </div>
           
           <div class="info">
-            <p>線画担当
-            <%= link_to @senga.user.name, profile_path(@senga.user)%>
-            </p>
-            <br>
+            
+            <!--線画担当者-->
+            <div class="name">
+              <div class="name_senga">
+                <%= image_tag('sengatoukousha.gif',:class => "name_image")%>
+                <%= link_to @senga.user.name, profile_path(@senga.user),:class => "name"%>
+              </div>
+            </div>
+            
+            <!--お気に入り-->
             <% if @senga.user_id != current_user.id %>
               <!--% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission != true %-->
                 <% if SengaLike.find_by(:user_id => current_user.id , :senga_id => @senga.id )  %>
-                　<%= link_to 'お気に入りにから削除' ,senga_like_path(params[:id]), class: "show_btn-square" %>
+                  <div class="edit pt-3">
+                    <button type="button" 
+                      class="btn btn-secondary btn-light "
+                      aria-haspopup="true"
+                      aria-expanded="false">
+                      <%= link_to senga_like_path(params[:id]) do %>
+                        <%= image_tag('no_favorite.gif',:class => "nav_menu")%>
+                      <% end %>
+                    </button>
+                  </div>
                 <% else %>
-                　<%= link_to 'お気に入りに追加' ,senga_like_path(params[:id]) , class: "show_btn-square" %>
+                  <div class="edit pt-3">
+                    <button type="button" 
+                      class="btn btn-secondary btn-light "
+                      aria-haspopup="true"
+                      aria-expanded="false">
+                      <%= link_to senga_like_path(params[:id]) do %>
+                        <%= image_tag('favorite.gif',:class => "nav_menu")%>
+                      <% end %>
+                    </button>
+                  </div>
                 <% end %>
               <!--% end %-->
             <% end %>
-  
+            
+            <!--申請-->
             <% if @senga.user_id != current_user.id %>
               <% if SengaRequest.find_by(:user_id => current_user.id, :senga_id => @senga.id )%>
-              <% if SengaRequest.find_by(:user_id => current_user.id, :senga_id => @senga.id ).permission != true %>
-              <%= link_to '申請取り消し', senga_request_path(@senga.id) , class: "show_btn-square"%>
-              <% end %>
-              <% else %>
-              <%= link_to '申請する', senga_request_path(@senga.id) , class: "show_btn-square"%>
-              <% end %>
+                <% if SengaRequest.find_by(:user_id => current_user.id, :senga_id => @senga.id ).permission != true %>
+                  <%= link_to '申請取り消し', senga_request_path(@senga.id) , class: "show_btn-square"%>
+                <% end %>
+                <% else %>
+                
+                <div class="edit pt-3">
+                  <button type="button" 
+                    class="btn btn-secondary btn-light "
+                    aria-haspopup="true"
+                    aria-expanded="false">
+                    <%= link_to senga_request_path(@senga.id) do %>
+                      <%= image_tag('sinsei.gif',:class => "nav_menu")%>
+                    <% end %>
+                  </button>
+                </div>
+
+                <% end %>
             <% end %>
           </div>
-          
-          
-        </p>
         
         <% if @senga.user_id == current_user.id %>
           <p>

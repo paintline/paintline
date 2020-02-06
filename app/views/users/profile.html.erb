@@ -13,7 +13,14 @@
       <div class="actions">
         <% if @user.id == current_user.id %>
           <div class="edit pt-3">
-            <%= link_to 'プロフィールを編集する' ,profile_edit_path %>
+            <button type="button" 
+              class="btn btn-secondary btn-light "
+              aria-haspopup="true"
+              aria-expanded="false">
+              <%= link_to profile_edit_path  do %>
+                <%= image_tag('edit.gif',:class => "nav_menu")%>
+              <% end %>
+            </button>
           </div>
         <% end %>
       </div>
