@@ -1,6 +1,6 @@
 <%= render partial: 'common/navi' %>
 <main role="main" class="list_mian" >
-  <div class="album py-5 ">
+  <div class="list">
     
     <!--ユーザーリスト-->
     <!--div class="rank_box">
@@ -8,20 +8,26 @@
       <!%= link_to '完成品お気に入り順',senga_list_path(type: 'paint_rank') ,class: 'paint_rank' %>
     </div-->
     
-    <div class="container">
-      <div class="row">
+    <div class="list_container">
+      <div class="list_row">
         
         <% if @pictures.any? %>
           <% @pictures.each do |s| %>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
+            <div class="col-md-3">
+              <div class="Request" >
+                
+                <!--依頼書風の穴-->
+                <div class="holl">
+                  <div class="Circle">
+                  </div>
+                </div>
                 
                 <!-- class名がSengaの場合【タイトル】 -->
                 <% if s.class.name == "Senga" %>
                   <h4 class="card-title text-center">
                     <%= s.tittle %>
                   </h4>
-                  
+                
                 <!-- class名がPaintの場合【タイトル】 -->
                 <% elsif s.class.name == "Paint" %>
                   <h4 class="card-title text-center">
@@ -51,43 +57,29 @@
                       </div>
                       <div class="name">
                         <div class="name_senga">
-                          <%= image_tag('sengatoukousha.gif',:class => "name_image")%>
                           <%= link_to s.user.name, profile_path(s.user),:class => "name"%>
                         </div>
+                        <%= image_tag('sengatoukousha.gif',:class => "name_image")%>
                       </div>
-                      <% if s.user_id == current_user.id %>
-                      
-                        <div class="edit pt-3">
-                          <button type="button" 
-                            class="btn btn-secondary btn-light "
-                            aria-haspopup="true"
-                            aria-expanded="false">
-                            <%= link_to senga_delete_path(s), method: :delete do %>
-                              <%= image_tag('sakujo.gif',:class => "nav_menu")%>
-                            <% end %>
-                          </button>
-                        </div>
-
-                      <% end %>
                     </div>
                   <% else %>
                   <% end %>
                   
                   <!-- class名がSengaの場合【内容】 -->
-                  <% if s.class.name == "Senga" %>
+                  <!--% if s.class.name == "Senga" %>
                       <div class="box3">
                         <span class="box-title">依頼内容</span>
-                        <%= s.description %>
+                        <!-%= s.description %>
                       </div>
                   <!-- class名がPaintの場合【内容】 -->
-                  <% elsif s.class.name == "Paint"%>
+                  <!--% elsif s.class.name == "Paint"%>
                       <div class="box3">
                         <span class="box-title">作品内容</span>
-                        <%= s.description %>
+                        <!--%= s.description %>
                       </div>
-                  <% end %>
+                  <!% end %-->
                   
-                  <div class="box11">
+                  <div class="box10">
                   <span class="box-title">タグ</span>
                   
                     <!-- class名がSengaの場合 -->
@@ -103,18 +95,30 @@
                     <%end%>
                   </div>
                   
-                  <!-- class名がSengaの場合 -->
+                  <!-- class名がSengaの場合【お気に入り】 -->
                   <% if s.class.name == "Senga" %>
                     <p class="favorite text-center">
                       お気に入り<%= s.senga_likes.length %>件
                     </p>
                   <% end %>
                   
-                  <!-- class名がPaintの場合 -->
+                  <!-- class名がPaintの場合【お気に入り】 -->
                   <% if s.class.name == "Paint" %>
                     <p class="card-text text-center">
                       お気に入り<%= s.paint_likes.length %>件
                     </p>
+                  <% end %>
+                  
+                  <!-- ユーザーがcurrent_userの場合【 削除 】 -->
+                  <% if s.user_id == current_user.id %>
+                      <button type="button" 
+                        class="btn btn-secondary btn-light "
+                        aria-haspopup="true"
+                        aria-expanded="false">
+                        <%= link_to senga_delete_path(s), method: :delete do %>
+                          <%= image_tag('sakujo.gif',:class => "delete")%>
+                        <% end %>
+                      </button>
                   <% end %>
                   
                 </div>

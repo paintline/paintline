@@ -103,13 +103,14 @@
 
 //投稿時のタグ選択枠
 .box10 {
-    max-width : 400px;
+    max-width: 400px;
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
+    margin-top: 15px;
     padding: 0.5em 1em;
-    border: solid 3px #ff962d;
+    border: solid 2px #ff962d;
     border-radius: 8px;
     
     .box-title {

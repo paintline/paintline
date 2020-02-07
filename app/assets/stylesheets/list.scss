@@ -1,10 +1,11 @@
 
 //リスト情報
 
+//一覧側からの画像
 .list_image {
     /* width: 100%; */
     width: 100%;
-    height: auto;
+    height: 500px;
     padding: 0px;
     /* margin-left: 5%; */
     /* margin-right: 5%; */
@@ -14,14 +15,17 @@
     /* border-top-right-radius: 20px; */
     /* border-bottom-right-radius: 20px; */
     /* border-bottom-left-radius: 20px; */
-    border-top: inset 2px #000;
-    border-bottom: inset 2px #000;
+    border-top: inset 1px #000;
+    border-bottom: inset 1px #000;
 }
+
 .jumbotron {
     padding: 2rem 1rem;
     background-color: #e9ecef;
     border-radius: 0.3rem;
 }
+
+//詳細画面
 .show_container{
     width: 100%;
     padding-right: 15px;
@@ -37,36 +41,92 @@
     padding : 0px;
     margin-left: auto;
     margin-right: auto;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
-    box-shadow: 0px 0px 20px 7px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 0, 0, 100);
 }
 
+//詳細画面タイトル
+.show_tittle{
+    padding: 30px;
+    text-align: center;
+}
+
+//詳細申請者
+.Application{
+    padding: 0 30px 30px 30px;
+}
+
+//画像
 .user_image{
     height: 50px;
     width: 50px;
     margin: auto;
 }
 
+//中央寄せ
 .text-center {
     text-align: center !important;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
+//空の場合
 .nill_box{
     height: 72vh;
 }
 
+//全体
 .senga-body {
+    height: 330px;
     -webkit-box-flex: 1;
     flex: 1 1 auto;
     padding: 1.25rem;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
+//全体
 .list_mian{
    background-color: #f0ffff;
+}
+
+
+//削除
+.delete{
+    width: 70px;
+    height: auto;
+}
+
+//依頼書全体
+.Request {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #ffeddb;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 100);
+    border-radius: 0.25rem;
+    margin-bottom: 3rem !important;
+}
+
+//依頼書風穴
+.holl{
+    height: 100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+        
+    .Circle{
+        width: 35px;
+        height: 35px;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 50%;
+        background-color: #f0ffff;
+        border: 1px solid rgba(0, 0, 0, 100);
+    }
 }

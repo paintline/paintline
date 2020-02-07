@@ -4,7 +4,7 @@
   <section class="content">
     <div class="container">
       
-      <h4 class="card-title text-center">
+      <h4 class="show_tittle">
         <%= @senga.tittle %>
       </h4>
       
@@ -84,15 +84,15 @@
             <% end %>
           </div>
         
-        <% if @senga.user_id == current_user.id %>
-          <p>
-            申請者一覧
-          </p>
+        <div class="Application">
+          <% if @senga.user_id == current_user.id %>
+            <p>
+              申請者一覧
+            </p>
             <% @senga.senga_requests.where(permission: nil).or(@senga.senga_requests.where(permission: true)).each do |r| %>
               <div>
                 <!--申請者一覧-->
                 <%=link_to r.user.name, profile_path(r.user) %>
-                
                 <% if r.permission != true %>
                   <p><%= link_to '許可' , senga_request_commit_path(r.id) , class: "btn btn-large"%>
                 <% elsif r.permission == true %>
@@ -101,10 +101,10 @@
                 <% if r.permission != true %>
                   <%= link_to '不許可' , senga_request_deny_path(r.id) , class: "btn btn-large"%></p>
                 <% end %>
-                
               </div>
             <% end %>
-        <% end %>
+          <% end %>
+        </div>
         
         <div class ="download">
           <% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission == true %>
