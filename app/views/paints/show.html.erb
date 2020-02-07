@@ -20,10 +20,12 @@
               <%= @paint.description %>
           </div>
           <div class="name">
+            <!--線画担当者-->
             <div class="name_senga">
               <%= image_tag('sengatoukousha.gif',:class => "name_image")%>
               <%= link_to @paint.senga.user.name, profile_path(@paint.senga.user),:class => "name" %>
             </div>
+            <!--依頼遂行者-->
             <div class="name_paints">
               <%= image_tag('iraisuikousha.gif',:class => "name_image")%>
               <%= link_to @paint.user.name, profile_path(@paint.user),:class => "name" %>

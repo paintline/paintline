@@ -5,12 +5,13 @@
 .list_image {
     /* width: 100%; */
     width: 100%;
-    height: 500px;
-    padding: 0px;
+    height: 300px;
+    padding: 30px;
+    background-color: #fff;
     /* margin-left: 5%; */
     /* margin-right: 5%; */
     -o-object-fit: cover;
-    object-fit: cover;
+    object-fit: contain;
     /* border-top-left-radius: 20px; */
     /* border-top-right-radius: 20px; */
     /* border-bottom-right-radius: 20px; */
@@ -52,7 +53,7 @@
 
 //詳細申請者
 .Application{
-    padding: 0 30px 30px 30px;
+    padding: 30px;
 }
 
 //画像
@@ -74,12 +75,20 @@
     height: 72vh;
 }
 
+//リストタイトル
+.list_tittle{
+    text-align: center;
+    padding: 20px 0px 20px 0px;
+    font-size: x-large;
+    font-family: Gungsuh;
+}
+
 //全体
 .senga-body {
-    height: 330px;
+    height: 270px;
     -webkit-box-flex: 1;
     flex: 1 1 auto;
-    padding: 1.25rem;
+    padding: 0px 20px 0px 20px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -89,7 +98,6 @@
 .list_mian{
    background-color: #f0ffff;
 }
-
 
 //削除
 .delete{
@@ -107,7 +115,7 @@
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #ffeddb;
+    background-color: #ffffc1;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 100);
     border-radius: 0.25rem;
@@ -116,10 +124,9 @@
 
 //依頼書風穴
 .holl{
-    height: 100px;
+    height: 80px;
     padding-top: 20px;
-    padding-bottom: 20px;
-        
+
     .Circle{
         width: 35px;
         height: 35px;

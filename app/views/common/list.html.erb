@@ -21,18 +21,19 @@
                   <div class="Circle">
                   </div>
                 </div>
-                
-                <!-- class名がSengaの場合【タイトル】 -->
+                                  
+                <!-- class名がSengaの場合【お気に入り】 -->
                 <% if s.class.name == "Senga" %>
-                  <h4 class="card-title text-center">
-                    <%= s.tittle %>
-                  </h4>
+                  <p class="favorite text-center">
+                    お気に入り<%= s.senga_likes.length %>件
+                  </p>
+                <% end %>
                 
-                <!-- class名がPaintの場合【タイトル】 -->
-                <% elsif s.class.name == "Paint" %>
-                  <h4 class="card-title text-center">
-                    <%= s.senga.tittle %>
-                  </h4>
+                <!-- class名がPaintの場合【お気に入り】 -->
+                <% if s.class.name == "Paint" %>
+                  <p class="card-text text-center">
+                    お気に入り<%= s.paint_likes.length %>件
+                  </p>
                 <% end %>
                 
                 <!-- class名がSengaの場合【画像】 -->
@@ -47,22 +48,42 @@
                   <% end %>
                 <% end %>
                 
+                <!-- class名がSengaの場合【タイトル】 -->
+                <% if s.class.name == "Senga" %>
+                  <div class="list_tittle">
+                    <%= s.tittle %>
+                  </div>
+                
+                <!-- class名がPaintの場合【タイトル】 -->
+                <% elsif s.class.name == "Paint" %>
+                  <div class="list_tittle">
+                    <%= s.senga.tittle %>
+                  </div>
+                <% end %>
+                
                 <div class="senga-body">
                   
                   <!-- class名がSengaの場合【線画投稿者の名前】 -->
                   <% if s.class.name == "Senga"%>
                     <!-- 線画投稿者の情報 -->
                     <div class="text-center">
-                      <div style="background: url('<%= image_url(s.user) %>'); background-position: center; background-size: cover" class="image">
+                      <div style="background: url('<%= image_url(s.user) %>'); background-position: center; background-size: cover" class="isenga">
                       </div>
                       <div class="name">
-                        <div class="name_senga">
-                          <%= link_to s.user.name, profile_path(s.user),:class => "name"%>
-                        </div>
-                        <%= image_tag('sengatoukousha.gif',:class => "name_image")%>
+                        <%= link_to s.user.name, profile_path(s.user),:class => "name"%>
+                      </div>
+                      <%= image_tag('sengatoukousha.gif',:class => "name_image")%>
+                    </div>
+                  <!-- class名が paintの場合【投稿者の名前】 -->
+                  <% elsif s.class.name == "Paint"%>
+                    <!-- 線画投稿者の情報 -->
+                    <div class="text-center">
+                      <div class="name">
+                        <!--依頼遂行者-->
+                        <%= image_tag('iraisuikousha.gif',:class => "name_image")%>
+                        <%= link_to s.user.name, profile_path(s.user),:class => "name"%>
                       </div>
                     </div>
-                  <% else %>
                   <% end %>
                   
                   <!-- class名がSengaの場合【内容】 -->
@@ -94,20 +115,6 @@
                       <% end %>
                     <%end%>
                   </div>
-                  
-                  <!-- class名がSengaの場合【お気に入り】 -->
-                  <% if s.class.name == "Senga" %>
-                    <p class="favorite text-center">
-                      お気に入り<%= s.senga_likes.length %>件
-                    </p>
-                  <% end %>
-                  
-                  <!-- class名がPaintの場合【お気に入り】 -->
-                  <% if s.class.name == "Paint" %>
-                    <p class="card-text text-center">
-                      お気に入り<%= s.paint_likes.length %>件
-                    </p>
-                  <% end %>
                   
                   <!-- ユーザーがcurrent_userの場合【 削除 】 -->
                   <% if s.user_id == current_user.id %>

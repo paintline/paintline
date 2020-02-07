@@ -84,8 +84,8 @@
             <% end %>
           </div>
         
+        <% if @senga.user_id == current_user.id %>
         <div class="Application">
-          <% if @senga.user_id == current_user.id %>
             <p>
               申請者一覧
             </p>
@@ -103,8 +103,8 @@
                 <% end %>
               </div>
             <% end %>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
         
         <div class ="download">
           <% if current_user.senga_requests.find_by(:senga_id => @senga.id) && current_user.senga_requests.find_by(:senga_id => @senga.id).permission == true %>
