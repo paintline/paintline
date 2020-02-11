@@ -85,18 +85,17 @@
 
 //全体
 .senga-body {
-    height: 270px;
     -webkit-box-flex: 1;
     flex: 1 1 auto;
-    padding: 0px 20px 0px 20px;
+    padding: 0px 20px 30px 20px;
     text-align: center;
     margin-left: auto;
     margin-right: auto;
 }
 
 //全体
-.list_mian{
-   background-color: #f0ffff;
+.list_main{
+   background: image-url('colc.jpeg');
 }
 
 //削除
@@ -115,25 +114,28 @@
     flex-direction: column;
     min-width: 0;
     word-wrap: break-word;
-    background-color: #ffffc1;
+    background-color: #fff;
     background-clip: border-box;
     border: 1px solid rgba(0, 0, 0, 100);
     border-radius: 0.25rem;
     margin-bottom: 3rem !important;
+    box-shadow: 5px 15px 0px rgba(0, 0, 0, 0.2)
 }
 
 //依頼書風穴
 .holl{
     height: 80px;
     padding-top: 20px;
-
+    
+    //ピン
     .Circle{
         width: 35px;
         height: 35px;
         margin-left: auto;
         margin-right: auto;
         border-radius: 50%;
-        background-color: #f0ffff;
+        background-color: #ff0000;
         border: 1px solid rgba(0, 0, 0, 100);
+        box-shadow: 3px 10px 0px rgba(0, 0, 0, 0.2)
     }
 }

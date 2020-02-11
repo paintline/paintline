@@ -102,35 +102,32 @@
     }
 }
 
-//投稿時のタグ選択枠
-.box10 {
-    max-width: 400px;
+//タグのボックス
+.tag_box {
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 40px;
-    margin-top: 40px;
-    padding: 0.5em 1em;
-    border: solid 2px #ff962d;
-    border-radius: 8px;
+    margin: 2em 0;
+    max-width: 500px;
+    padding: 25px 10px 7px;
+    border: solid 2px #FFC107;
     
-    .box-title {
+        .box-title {
         position: absolute;
         display: inline-block;
-        top: -13px;
-        left: 10px;
+        top: -2px;
+        left: -2px;
         padding: 0 9px;
-        line-height: 1;
-        font-size: 19px;
-        background: #FFF;
-        color: #ff962d;
+        height: 25px;
+        line-height: 25px;
+        font-size: 17px;
+        background: #FFC107;
+        color: #ffffff;
         font-weight: bold;
-    
-            p {
+        
+             p {
             margin: 0; 
             padding: 0;
+        }
     }
-  }
 }
 
 //一覧時のタグ枠

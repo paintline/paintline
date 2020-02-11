@@ -108,12 +108,13 @@ class SengasController < ApplicationController
         end
     end
     
-    #削除
+#線画削除----------------------------------------------
+
     def destroy
         @pictures = Senga.find(params[:id])
         @pictures.destroy
         flash[:succsess] = "投稿を削除しました"
-        redirect_to senga_path
+        redirect_to senga_list_path
     end
     
 #線画申請関連---------------------------------------

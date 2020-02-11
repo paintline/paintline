@@ -1,5 +1,5 @@
 <%= render partial: 'common/navi' %>
-<main role="main" class="list_mian" >
+<main role="main" class="list_main" >
   <div class="list">
     
     <!--ユーザーリスト-->
@@ -40,11 +40,14 @@
                 <% if s.class.name == "Senga" %>
                   <%= link_to senga_path(s) do %>
                     <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
+                    依頼詳細⇒
                   <% end %>
+                  
                 <!-- class名がPaintの場合【画像】 -->
                 <% elsif s.class.name == "Paint"%>
                   <%= link_to paint_path(s) do %>
                     <%= image_tag (s.image.url + '.png'), class: 'list_image' %>
+                    作品詳細⇒
                   <% end %>
                 <% end %>
                 
@@ -76,7 +79,6 @@
                     </div>
                   <!-- class名が paintの場合【投稿者の名前】 -->
                   <% elsif s.class.name == "Paint"%>
-                    <!-- 線画投稿者の情報 -->
                     <div class="text-center">
                       <div class="name">
                         <!--依頼遂行者-->
@@ -88,30 +90,29 @@
                   
                   <!-- class名がSengaの場合【内容】 -->
                   <!--% if s.class.name == "Senga" %>
-                      <div class="box3">
-                        <span class="box-title">依頼内容</span>
-                        <!-%= s.description %>
-                      </div>
+                        <!--%= s.description %>
                   <!-- class名がPaintの場合【内容】 -->
                   <!--% elsif s.class.name == "Paint"%>
-                      <div class="box3">
-                        <span class="box-title">作品内容</span>
-                        <!--%= s.description %>
-                      </div>
-                  <!% end %-->
+                        <!--%= s.description %-->
+
+                  <!--% end %-->
                   
-                  <div class="box10">
+                  <div class="tag_box">
                   <span class="box-title">タグ</span>
                   
                     <!-- class名がSengaの場合 -->
                     <% if s.class.name == "Senga" %>
                       <% s.senga_categories.each do |sc| %>
-                        <%=link_to sc.category.name, senga_list_path(category: sc.category.id,type: 'category') %>
+                        <%=link_to senga_list_path(category: sc.category.id,type: 'category') do %>
+                        <%= image_tag('/categories/' + sc.category.id.to_s + '.gif' ,:class => "delete")%>
+                        <% end %>
                       <% end %>
                     <!-- class名がPaintの場合 -->
                     <% elsif s.class.name == "Paint"%>
                       <% s.senga.senga_categories.each do |sc| %>
-                        <%=link_to sc.category.name, paint_list_path(category: sc.category.id,type: 'category') %>
+                        <%=link_to senga_list_path(category: sc.category.id,type: 'category') do %>
+                        <%= image_tag('/categories/' + sc.category.id.to_s + '.gif' ,:class => "delete")%>
+                        <% end %>
                       <% end %>
                     <%end%>
                   </div>

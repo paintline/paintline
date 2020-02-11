@@ -30,9 +30,9 @@
       <div class="status pt-3">
         
         <div class="U_senga">
-          <p class="posts_count">
+          <div class="posts_count">
             線画投稿数 全<%=link_to @senga_all.length ,senga_list_path(user_id: @user.id) %>件
-          </p>
+          </div>
           <% if @senga.any? %>
             <% @senga.each do |s| %>
               <%= link_to senga_path(s) do %>
@@ -45,9 +45,9 @@
         </div>
         
         <div class="U_paint">
-          <p class="posts_count">
+          <div class="posts_count">
             依頼完遂数 全<%=link_to @paint_all.length ,paint_list_path(user_id: @user.id) %>件
-          </p>
+          </div>
           <% if @paint.any? %>
             <% @paint.each do |s| %>
               <%= link_to paint_path(s) do %>
